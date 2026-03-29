@@ -1,3 +1,4 @@
+import { LazyImage } from '../components/LazyImage'
 import { SectionHeader } from '../components/SectionHeader'
 
 export function ClientsSection({ clients }) {
@@ -13,7 +14,7 @@ export function ClientsSection({ clients }) {
         <div className="client-grid">
           {clients.map((client) => (
             <article key={client.name} className="client-card">
-              <img src={client.logo} alt={client.name} />
+              <LazyImage src={client.logo} alt={client.name} />
             </article>
           ))}
         </div>

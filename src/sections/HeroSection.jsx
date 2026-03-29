@@ -1,3 +1,5 @@
+import { LazyImage } from '../components/LazyImage'
+
 export function HeroSection({ hero }) {
   return (
     <section className="hero" id="home">
@@ -24,7 +26,11 @@ export function HeroSection({ hero }) {
           </div>
         </div>
         <div className="hero__visual">
-          <img src={hero.heroImage} alt="Global Infra Solutions project showcase" />
+          <LazyImage
+            src={hero.heroImage}
+            alt="Global Infra Solutions project showcase"
+            eager
+          />
         </div>
       </div>
     </section>

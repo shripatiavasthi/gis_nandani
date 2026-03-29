@@ -1,3 +1,4 @@
+import { LazyImage } from '../components/LazyImage'
 import { SectionHeader } from '../components/SectionHeader'
 
 export function AboutSection({ about }) {
@@ -8,7 +9,7 @@ export function AboutSection({ about }) {
           <SectionHeader eyebrow="Company Profile" title={about.title} description={about.description} />
         </div>
         <div className="about-media">
-          <img src={about.image} alt="About Global Infra Solutions" />
+          <LazyImage src={about.image} alt="About Global Infra Solutions" />
         </div>
       </div>
     </section>
