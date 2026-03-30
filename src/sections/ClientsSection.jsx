@@ -14,7 +14,9 @@ export function ClientsSection({ clients }) {
         <div className="client-grid">
           {clients.map((client) => (
             <article key={client.name} className="client-card">
-              <LazyImage src={client.logo} alt={client.name} />
+              <div className="client-card__media">
+                <LazyImage src={client.logo} alt={client.name} className="client-card__logo" />
+              </div>
             </article>
           ))}
         </div>

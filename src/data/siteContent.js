@@ -5,6 +5,7 @@ export const siteContent = {
     name: 'Global Infra Solutions',
     shortName: 'GIS',
     logoText: 'Global Infra Solutions',
+    logoUrl: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774868633898-gis-logo.png',
   },
   contact: {
     phones: ['+91 9873342618', '+91 8860745145'],
@@ -36,13 +37,13 @@ export const siteContent = {
       { value: '132', label: 'Projects completed' },
       { value: '402', label: 'Projects ongoing' },
     ],
-    heroImage: `${imageBase}/aboutUsImg.jpeg`,
+    heroImage: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869047585-gis-about-hero.jpeg',
   },
   about: {
     title: 'About Us',
     description:
       'At Global Infra Solutions, we are a trusted partner for civil and interior construction needs. Our work covers planning, design, execution, and post-project support across residential, commercial, industrial, and government projects. We combine modern materials, practical engineering, and disciplined delivery to create spaces that perform well and present well.',
-    image: `${imageBase}/aboutUsImg.jpeg`,
+    image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869199162-gis-about-section.jpeg',
   },
   highlights: [
     {
@@ -142,16 +143,16 @@ export const siteContent = {
     },
   ],
   clients: [
-    { name: 'Client 01', logo: `${imageBase}/clints-logo/1.png` },
-    { name: 'Client 02', logo: `${imageBase}/clints-logo/2.png` },
-    { name: 'Client 03', logo: `${imageBase}/clints-logo/3.png` },
-    { name: 'Client 04', logo: `${imageBase}/clints-logo/4.png` },
-    { name: 'Client 05', logo: `${imageBase}/clints-logo/5.png` },
-    { name: 'Client 06', logo: `${imageBase}/clints-logo/6.png` },
-    { name: 'Client 07', logo: `${imageBase}/clints-logo/7.png` },
-    { name: 'Client 08', logo: `${imageBase}/clints-logo/8.png` },
-    { name: 'Client 09', logo: `${imageBase}/clints-logo/9.png` },
-    { name: 'Client 10', logo: `${imageBase}/clints-logo/10.png` },
+    { name: 'Client 01', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869356135-client-1.png' },
+    { name: 'Client 02', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869357328-client-2.png' },
+    { name: 'Client 03', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869358358-client-3.png' },
+    { name: 'Client 04', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869359503-client-4.png' },
+    { name: 'Client 05', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869360342-client-5.png' },
+    { name: 'Client 06', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869356199-client-6.png' },
+    { name: 'Client 07', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869357361-client-7.png' },
+    { name: 'Client 08', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869358283-client-8.png' },
+    { name: 'Client 09', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869359151-client-9.png' },
+    { name: 'Client 10', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869360304-client-10.png' },
   ],
   footer: {
     description:
