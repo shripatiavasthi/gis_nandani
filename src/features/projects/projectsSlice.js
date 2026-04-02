@@ -76,6 +76,17 @@ export const deleteProjectGalleryImage = createAsyncThunk(
   },
 )
 
+export const updateProjectGalleryImageCaption = createAsyncThunk(
+  'projects/updateProjectGalleryImageCaption',
+  async ({ token, slug, key, caption }) => {
+    const payload = await authorizedJsonRequest(`/api/projects/${slug}/gallery`, token, {
+      method: 'PATCH',
+      body: JSON.stringify({ key, caption }),
+    })
+    return payload.data
+  },
+)
+
 const projectsSlice = createSlice({
   name: 'projects',
   initialState: {
@@ -130,6 +141,7 @@ const projectsSlice = createSlice({
             updateProject.pending.type,
             deleteProject.pending.type,
             addProjectGalleryImages.pending.type,
+            updateProjectGalleryImageCaption.pending.type,
             deleteProjectGalleryImage.pending.type,
           ].includes(action.type),
         (state) => {
@@ -144,6 +156,7 @@ const projectsSlice = createSlice({
             updateProject.fulfilled.type,
             deleteProject.fulfilled.type,
             addProjectGalleryImages.fulfilled.type,
+            updateProjectGalleryImageCaption.fulfilled.type,
             deleteProjectGalleryImage.fulfilled.type,
           ].includes(action.type),
         (state, action) => {
@@ -152,6 +165,9 @@ const projectsSlice = createSlice({
             state.selectedProject = action.payload
           }
           if (action.type === addProjectGalleryImages.fulfilled.type) {
+            state.selectedProject = action.payload
+          }
+          if (action.type === updateProjectGalleryImageCaption.fulfilled.type) {
             state.selectedProject = action.payload
           }
           if (action.type === deleteProjectGalleryImage.fulfilled.type) {
@@ -169,6 +185,7 @@ const projectsSlice = createSlice({
             updateProject.rejected.type,
             deleteProject.rejected.type,
             addProjectGalleryImages.rejected.type,
+            updateProjectGalleryImageCaption.rejected.type,
             deleteProjectGalleryImage.rejected.type,
           ].includes(action.type),
         (state, action) => {

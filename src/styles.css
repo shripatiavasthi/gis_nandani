@@ -368,6 +368,8 @@ img {
   border: 1px solid var(--line);
   border-radius: 1.1rem;
   background: white;
+  display: grid;
+  gap: 0.8rem;
 }
 
 .crm-gallery-item img {
@@ -375,6 +377,57 @@ img {
   height: 14rem;
   border-radius: 0.9rem;
   object-fit: cover;
+}
+
+.crm-gallery-item__caption-row,
+.crm-gallery-item__actions,
+.crm-gallery-item__editor {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.crm-gallery-item__caption-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.crm-gallery-item__caption-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.crm-gallery-item__caption-field span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brand-deep);
+}
+
+.crm-gallery-item__caption-field input {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(31, 31, 29, 0.14);
+  border-radius: 0.85rem;
+  background: white;
+  font: inherit;
+  color: var(--text);
+}
+
+.crm-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(31, 31, 29, 0.06);
+  color: var(--brand-deep);
+  cursor: pointer;
+}
+
+.crm-icon-button svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .container {

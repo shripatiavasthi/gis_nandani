@@ -12,6 +12,7 @@ import {
   deleteProjectGalleryImage,
   fetchProjectBySlug,
   fetchProjects,
+  updateProjectGalleryImageCaption,
   updateProject,
 } from '../features/projects/projectsSlice'
 
@@ -36,6 +37,8 @@ export default function CrmPage() {
     editingSlug: '',
   })
   const [galleryFiles, setGalleryFiles] = useState([])
+  const [editingCaptionKey, setEditingCaptionKey] = useState('')
+  const [captionDraft, setCaptionDraft] = useState('')
 
   const isBusy = authStatus === 'loading' || mutationStatus === 'loading'
   const errorMessage = useMemo(() => authError || projectError, [authError, projectError])
@@ -55,6 +58,11 @@ export default function CrmPage() {
       dispatch(fetchProjectBySlug(selectedSlug))
     }
   }, [dispatch, selectedSlug])
+
+  useEffect(() => {
+    setEditingCaptionKey('')
+    setCaptionDraft('')
+  }, [selectedSlug])
 
   const resetProjectForm = () => {
     setProjectForm({
@@ -191,6 +199,46 @@ export default function CrmPage() {
       await dispatch(deleteProjectGalleryImage({ token, slug: selectedSlug, key })).unwrap()
       setStatusMessage('Gallery image deleted successfully.')
       await dispatch(fetchProjects()).unwrap()
+      await dispatch(fetchProjectBySlug(selectedSlug)).unwrap()
+    } catch (error) {
+      return error
+    }
+  }
+
+  const getGalleryCaptionValue = (image) => {
+    if (image.caption) {
+      return image.caption
+    }
+
+    const rawFileName = image.key.split('/').pop() || ''
+    const fileNameWithoutPrefix = rawFileName.replace(/^\d+-/, '')
+
+    return fileNameWithoutPrefix.replace(/\.[^.]+$/, '') || selectedProject?.name || 'Gallery image'
+  }
+
+  const handleStartCaptionEdit = (image) => {
+    setEditingCaptionKey(image.key)
+    setCaptionDraft(getGalleryCaptionValue(image))
+  }
+
+  const handleCancelCaptionEdit = () => {
+    setEditingCaptionKey('')
+    setCaptionDraft('')
+  }
+
+  const handleSaveGalleryCaption = async (key) => {
+    try {
+      await dispatch(
+        updateProjectGalleryImageCaption({
+          token,
+          slug: selectedSlug,
+          key,
+          caption: captionDraft,
+        }),
+      ).unwrap()
+      setStatusMessage('Gallery image caption updated successfully.')
+      setEditingCaptionKey('')
+      setCaptionDraft('')
       await dispatch(fetchProjectBySlug(selectedSlug)).unwrap()
     } catch (error) {
       return error
@@ -446,14 +494,62 @@ export default function CrmPage() {
                   {selectedProject.galleryImages.map((image) => (
                     <figure className="crm-gallery-item" key={image.key}>
                       <LazyImage src={image.url} alt={image.caption || selectedProject.name} />
-                      <figcaption>{image.caption || image.key}</figcaption>
-                      <button
-                        className="crm-button crm-button--danger"
-                        onClick={() => handleDeleteGalleryImage(image.key)}
-                        type="button"
-                      >
-                        Delete Image
-                      </button>
+                      {editingCaptionKey === image.key ? (
+                        <div className="crm-gallery-item__editor">
+                          <label className="crm-gallery-item__caption-field">
+                            <span>Caption</span>
+                            <input
+                              type="text"
+                              value={captionDraft}
+                              onChange={(event) => setCaptionDraft(event.target.value)}
+                            />
+                          </label>
+                          <div className="crm-gallery-item__actions">
+                            <button
+                              className="crm-button crm-button--primary"
+                              onClick={() => handleSaveGalleryCaption(image.key)}
+                              type="button"
+                              disabled={isBusy}
+                            >
+                              Save
+                            </button>
+                            <button
+                              className="crm-button crm-button--ghost"
+                              onClick={handleCancelCaptionEdit}
+                              type="button"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="crm-gallery-item__caption-row">
+                          <figcaption>{getGalleryCaptionValue(image)}</figcaption>
+                          <button
+                            className="crm-icon-button"
+                            onClick={() => handleStartCaptionEdit(image)}
+                            type="button"
+                            aria-label="Edit image caption"
+                            title="Edit caption"
+                          >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path
+                                d="M4 20h4l10-10-4-4L4 16v4zm12.7-13.3 1.6-1.6a1 1 0 0 1 1.4 0l1.2 1.2a1 1 0 0 1 0 1.4L19.3 9l-2.6-2.3z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      )}
+                      <div className="crm-gallery-item__actions">
+                        <button
+                          className="crm-button crm-button--danger"
+                          onClick={() => handleDeleteGalleryImage(image.key)}
+                          type="button"
+                        >
+                          Delete Image
+                        </button>
+                      </div>
                     </figure>
                   ))}
                 </div>
