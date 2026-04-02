@@ -344,7 +344,7 @@ export default function CrmPage() {
               </button>
             </form>
 
-            <div className="crm-panel">
+            <div className="crm-panel crm-panel--scroll-layout">
               <div className="crm-panel__header">
                 <div>
                   <p className="crm-section__eyebrow">Existing Cards</p>
@@ -353,7 +353,7 @@ export default function CrmPage() {
                 <span>{projects.length} total</span>
               </div>
 
-              <div className="crm-list">
+              <div className="crm-list crm-list--scroll">
                 {projects.map((project) => (
                   <article className="crm-project-item" key={project.slug}>
                     <LazyImage src={project.coverImage?.url} alt={project.name} />
@@ -432,7 +432,7 @@ export default function CrmPage() {
               </form>
             </div>
 
-            <div className="crm-panel">
+            <div className="crm-panel crm-panel--scroll-layout">
               <div className="crm-panel__header">
                 <div>
                   <p className="crm-section__eyebrow">Gallery CRUD</p>
@@ -442,7 +442,7 @@ export default function CrmPage() {
               </div>
 
               {selectedProject ? (
-                <div className="crm-gallery-grid">
+                <div className="crm-gallery-grid crm-gallery-grid--scroll">
                   {selectedProject.galleryImages.map((image) => (
                     <figure className="crm-gallery-item" key={image.key}>
                       <LazyImage src={image.url} alt={image.caption || selectedProject.name} />

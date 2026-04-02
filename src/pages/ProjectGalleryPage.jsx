@@ -86,8 +86,9 @@ export default function ProjectGalleryPage() {
         <div className="project-page__grid">
           {selectedProject.galleryImages?.length ? (
             selectedProject.galleryImages.map((image, index) => {
+   
               const imageLabel = getGalleryImageLabel(image, index)
-
+              console.log(imageLabel,"name update name")
               return (
                 <figure key={image.key} className="project-page__image">
                   <LazyImage src={image.url} alt={imageLabel} />

@@ -168,6 +168,10 @@ img {
 
 .crm-content {
   padding: 1.6rem;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .crm-toolbar,
@@ -189,6 +193,8 @@ img {
   display: grid;
   grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
   gap: 1.25rem;
+  flex: 1;
+  min-height: 0;
 }
 
 .crm-panel-grid--gallery {
@@ -197,6 +203,12 @@ img {
 
 .crm-panel {
   padding: 1.4rem;
+}
+
+.crm-panel--scroll-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .crm-form {
@@ -279,6 +291,13 @@ img {
 
 .crm-list {
   margin-top: 1rem;
+}
+
+.crm-list--scroll,
+.crm-gallery-grid--scroll {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.35rem;
 }
 
 .crm-project-item {
@@ -951,10 +970,21 @@ img {
     border-radius: 0 0 1.6rem 1.6rem;
   }
 
+  .crm-content {
+    height: auto;
+    overflow: visible;
+  }
+
   .crm-panel-grid,
   .crm-panel-grid--gallery,
   .crm-gallery-grid {
     grid-template-columns: 1fr;
+  }
+
+  .crm-list--scroll,
+  .crm-gallery-grid--scroll {
+    overflow: visible;
+    padding-right: 0;
   }
 
   .topbar__inner,
