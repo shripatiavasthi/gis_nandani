@@ -59,6 +59,14 @@ export default function ProjectGalleryPage() {
     )
   }
 
+  const getGalleryImageLabel = (image, index) => {
+    if (image.caption) {
+      return image.caption
+    }
+
+    return `${selectedProject.name} gallery image ${index + 1}`
+  }
+
   return (
     <div className="project-page-shell">
       <div className="project-page container">
@@ -77,12 +85,16 @@ export default function ProjectGalleryPage() {
 
         <div className="project-page__grid">
           {selectedProject.galleryImages?.length ? (
-            selectedProject.galleryImages.map((image) => (
-              <figure key={image.key} className="project-page__image">
-                <LazyImage src={image.url} alt={image.caption || selectedProject.name} />
-                {image.caption ? <figcaption>{image.caption}</figcaption> : null}
-              </figure>
-            ))
+            selectedProject.galleryImages.map((image, index) => {
+              const imageLabel = getGalleryImageLabel(image, index)
+
+              return (
+                <figure key={image.key} className="project-page__image">
+                  <LazyImage src={image.url} alt={imageLabel} />
+                  <figcaption>{imageLabel}</figcaption>
+                </figure>
+              )
+            })
           ) : (
             <p className="project-page__empty">No gallery images have been added for this project yet.</p>
           )}
