@@ -774,16 +774,12 @@ img {
   overflow-x: auto;
   padding-bottom: 0.3rem;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .gallery-carousel::-webkit-scrollbar {
-  height: 0.55rem;
-}
-
-.gallery-carousel::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(31, 31, 29, 0.18);
+  display: none;
 }
 
 .projects-index-grid {
