@@ -60,10 +60,6 @@ export default function ProjectGalleryPage() {
   }
 
   const getGalleryImageLabel = (image, index) => {
-    if (image.caption) {
-      return image.caption
-    }
-
     return `${selectedProject.name} gallery image ${index + 1}`
   }
 
@@ -88,7 +84,7 @@ export default function ProjectGalleryPage() {
             selectedProject.galleryImages.map((image, index) => {
    
               const imageLabel = getGalleryImageLabel(image, index)
-              console.log(imageLabel,"name update name")
+
               return (
                 <figure key={image.key} className="project-page__image">
                   <LazyImage src={image.url} alt={imageLabel} />
