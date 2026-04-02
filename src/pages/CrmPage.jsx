@@ -395,14 +395,14 @@ export default function CrmPage() {
           </section>
         ) : (
           <section className="crm-panel-grid crm-panel-grid--gallery">
-            <div className="crm-panel">
+            <div className="crm-panel crm-panel--scroll-layout">
               <div className="crm-panel__header">
                 <div>
                   <p className="crm-section__eyebrow">Gallery Selector</p>
                   <h2>Choose Client</h2>
                 </div>
               </div>
-              <div className="crm-selector-list">
+              <div className="crm-selector-list crm-selector-list--scroll">
                 {projects.map((project) => (
                   <button
                     className={`crm-selector ${selectedSlug === project.slug ? 'crm-selector--active' : ''}`}

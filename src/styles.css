@@ -209,6 +209,8 @@ img {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .crm-form {
@@ -294,10 +296,14 @@ img {
 }
 
 .crm-list--scroll,
+.crm-selector-list--scroll,
 .crm-gallery-grid--scroll {
+  flex: 1;
   min-height: 0;
   overflow-y: auto;
   padding-right: 0.35rem;
+  padding-bottom: 1rem;
+  scroll-padding-bottom: 1rem;
 }
 
 .crm-project-item {
@@ -345,6 +351,10 @@ img {
 .crm-selector--active {
   border-color: rgba(23, 50, 74, 0.35);
   box-shadow: 0 0 0 2px rgba(23, 50, 74, 0.08);
+}
+
+.crm-selector-list--scroll {
+  margin-top: 1rem;
 }
 
 .crm-gallery-grid {
@@ -982,6 +992,7 @@ img {
   }
 
   .crm-list--scroll,
+  .crm-selector-list--scroll,
   .crm-gallery-grid--scroll {
     overflow: visible;
     padding-right: 0;
