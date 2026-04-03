@@ -195,6 +195,10 @@ export default function CrmPage() {
   }
 
   const handleDeleteGalleryImage = async (key) => {
+    if (!window.confirm('Delete this gallery image permanently?')) {
+      return
+    }
+
     try {
       await dispatch(deleteProjectGalleryImage({ token, slug: selectedSlug, key })).unwrap()
       setStatusMessage('Gallery image deleted successfully.')
