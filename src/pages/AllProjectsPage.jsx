@@ -1,10 +1,15 @@
 import { useEffect, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import {
+  PublicSiteFooter,
+  PublicSiteHeader,
+  WhatsAppBubble,
+} from '../components/PublicSiteChrome'
 import { LazyImage } from '../components/LazyImage'
 import { siteContent } from '../data/siteContent'
-import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchProjects } from '../features/projects/projectsSlice'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 export default function AllProjectsPage() {
   const dispatch = useAppDispatch()
@@ -30,44 +35,84 @@ export default function AllProjectsPage() {
   const projects = items.length ? items : fallbackProjects
 
   return (
-    <div className="project-page-shell">
-      <div className="project-page container">
-        <div className="project-page__topbar">
-          <Link className="project-page__back" to="/">
-            Back to Home
-          </Link>
-          <div>
-            <p className="project-page__eyebrow">Project Showcase</p>
-            <h1>All Projects</h1>
-            <p>{status === 'loading' ? 'Loading projects...' : 'Browse every delivered project card in one place.'}</p>
-          </div>
-        </div>
+    <div className="site-shell">
+      <PublicSiteHeader />
 
-        <div className="projects-index-grid">
-          {projects.map((project) => (
-            <article
-              key={project.slug}
-              className="gallery-card gallery-card--interactive gallery-card--grid"
-              onClick={() => navigate(`/projects/${project.slug}`, { state: { project } })}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault()
-                  navigate(`/projects/${project.slug}`, { state: { project } })
-                }
-              }}
-            >
-              <LazyImage src={project.coverImage?.url || project.image} alt={project.name || project.title} />
-              <div className="gallery-card__content">
-                <span>{project.galleryCount ? `${project.galleryCount} photos` : 'Delivered Project'}</span>
-                <h3>{project.name || project.title}</h3>
-                <p>{project.shortDescription}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
+      <main>
+        <section className="projects-hero">
+          <div className="container">
+            <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p>
+            <h1>Our Projects</h1>
+            <p className="hero-copy narrow">
+              {status === 'loading'
+                ? 'Loading projects...'
+                : 'Browse every delivered project card and move into each project gallery.'}
+            </p>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="project-page__topbar">
+              <Link className="project-page__back" to="/">
+                Back to Home
+              </Link>
+            </div>
+
+            <div className="project-category-grid">
+              {siteContent.projectSeries.map((category, index) => (
+                <article key={category.title} className="project-category-card">
+                  <LazyImage
+                    src={siteContent.gallery[index % siteContent.gallery.length].image}
+                    alt={category.title}
+                  />
+                  <div className="project-category-copy">
+                    <h3>{category.title}</h3>
+                    <p>{category.description}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section soft-section">
+          <div className="container">
+            <div className="section-heading centered">
+              <h2>Gallery</h2>
+              <p>Designs that define spaces.</p>
+            </div>
+
+            <div className="project-gallery-grid">
+              {projects.map((project) => (
+                <article
+                  key={project.slug}
+                  className="project-gallery-card"
+                  onClick={() => navigate(`/projects/${project.slug}`, { state: { project } })}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault()
+                      navigate(`/projects/${project.slug}`, { state: { project } })
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
+                  <LazyImage src={project.coverImage?.url || project.image} alt={project.name || project.title} />
+                  <div className="project-gallery-card__body">
+                    <span>{project.galleryCount ? `${project.galleryCount} photos` : 'Delivered Project'}</span>
+                    <h3>{project.name || project.title}</h3>
+                    <p>{project.shortDescription}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <PublicSiteFooter />
+      <WhatsAppBubble />
     </div>
   )
 }

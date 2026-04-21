@@ -9,7 +9,8 @@ export const siteContent = {
   },
   contact: {
     phones: ['+91 9873342618', '+91 8860745145'],
-    emails: ['globalinfrasolu@gmail.com', 'sales@globalinfraa.com', 'supports@globalinfraa.com'],
+    emails: ['solutions@globalinfraa.com', 'globalinfrasolu@gmail.com'],
+    headquarters: '[Insert Address]',
   },
   socialLinks: [
     { label: 'Facebook', href: 'https://www.facebook.com/share/17sgvvLmz2/?mibextid=wwXIfr' },
@@ -18,128 +19,186 @@ export const siteContent = {
   ],
   navigation: [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
-    { label: 'Why Choose Us', href: '#why-choose-us' },
-    { label: 'Clients', href: '#clients' },
+    { label: 'Intro', href: '#intro' },
+    { label: 'Solutions', href: '#solutions' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Feedback', href: '#feedback' },
     { label: 'Contact', href: '#contact' },
   ],
   hero: {
-    eyebrow: 'Civil And Interior Turnkey Projects',
-    title: 'Welcome To Global Infra Solutions',
+    eyebrow: 'Turnkey Infrastructure And Interior Delivery',
+    title: 'Your Global Partner for Turnkey Infrastructure & Interior Solutions.',
+    subHeadline:
+      'From foundational civil engineering to high-end corporate interiors, we deliver precision-led environments for brands that lead the world.',
     description:
-      'Global Infra Solutions is a distinguished partnership company specializing in civil and interior turnkey projects. With a collective experience of 25 years in the industry, the team delivers infrastructure and interior solutions with quality, precision, and client-first execution.',
-    primaryCta: { label: 'Explore Services', href: '#services' },
-    secondaryCta: { label: 'View Projects', href: '#gallery' },
+      'Global Infra Solutions brings together civil execution, interior fit-outs, and bespoke furniture systems under one accountable delivery framework.',
+    primaryCta: { label: 'Start Your Project', href: '#contact' },
+    secondaryCta: { label: 'View Projects', href: '#projects' },
     metrics: [
-      { value: '25+', label: 'Years of combined experience' },
-      { value: '132', label: 'Projects completed' },
-      { value: '402', label: 'Projects ongoing' },
+      { value: '25+', label: 'Years of cross-sector expertise' },
+      { value: '132+', label: 'Completed milestones' },
+      { value: '402', label: 'Active site operations' },
     ],
-    heroImage: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869047585-gis-about-hero.jpeg',
+    images: [
+      'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869047585-gis-about-hero.jpeg',
+      `${imageBase}/Jio Mess/jio-6.jpeg`,
+      `${imageBase}/Library/Gallery.jpeg`,
+    ],
   },
-  about: {
-    title: 'About Us',
-    description:
-      'At Global Infra Solutions, we are a trusted partner for civil and interior construction needs. Our work covers planning, design, execution, and post-project support across residential, commercial, industrial, and government projects. We combine modern materials, practical engineering, and disciplined delivery to create spaces that perform well and present well.',
+  intro: {
+    title: 'Integrated execution for ambitious infrastructure and interior briefs.',
+    body: [
+      'At Global Infra Solutions, we deliver integrated construction and interior solutions designed to meet the evolving needs of modern businesses.',
+      'From initial planning to final execution, we ensure every project is completed with efficiency, transparency, and uncompromised quality.',
+    ],
     image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869199162-gis-about-section.jpeg',
+    pillars: [
+      {
+        title: 'Total Accountability',
+        description: 'Single-point responsibility from blueprint to handover.',
+      },
+      {
+        title: 'Architectural Precision',
+        description: 'Merging structural integrity with premium aesthetics.',
+      },
+      {
+        title: 'Global Standards',
+        description: '25 years of cross-sector expertise in luxury retail, government, and corporate hubs.',
+      },
+    ],
   },
-  highlights: [
-    {
-      title: 'Our Vision',
-      description:
-        'To be recognized as a leading provider of civil and interior solutions, setting benchmarks in quality, innovation, and customer satisfaction.',
-    },
-    {
-      title: 'Our Mission',
-      description:
-        'To deliver world-class turnkey solutions that meet high standards of quality and safety while creating dependable value for every client.',
-    },
-    {
-      title: 'Our Scope',
-      description:
-        'From civil structures to interior transformation and custom furniture solutions, GIS handles projects end to end with a single accountable team.',
-    },
+  featureStats: [
+    { value: '100+', label: 'Projects Across Sectors' },
+    { value: '25+', label: 'Years Combined Leadership' },
   ],
-  services: {
-    intro:
-      'Global Infra Solutions offers a comprehensive range of services designed to meet diverse construction and interior design needs.',
+  solutions: {
+    eyebrow: 'Services | Strategic Solutions',
+    title: 'Execution models built for decision-makers who need speed, clarity, and finish quality.',
     items: [
       {
-        title: 'Civil Turnkey Projects',
+        id: 'turnkey-civil-infrastructure',
+        numeral: 'I',
+        title: 'Turnkey Civil Infrastructure',
         description:
-          'Complete civil construction delivery from design coordination through final completion for residential, commercial, and industrial projects.',
+          'End-to-end structural development for commercial, industrial, and institutional sectors. We manage the complexity of large-scale builds so you can focus on your core business.',
+        competencies: [
+          'Structural Engineering',
+          'Site Preparation',
+          'Industrial Facilities',
+          'Institutional Foundations',
+        ],
       },
       {
-        title: 'Interior Turnkey Projects',
+        id: 'high-end-interior-fit-outs',
+        numeral: 'II',
+        title: 'High-End Interior Fit-Outs',
         description:
-          'Space planning, interior design, site execution, and fit-out management to create functional and visually strong environments.',
+          'Transforming raw shells into world-class environments. We specialize in luxury retail, executive office suites, and premium residential interiors.',
+        competencies: [
+          'Space Planning',
+          'Material Curation',
+          'MEP Integration',
+          'Bespoke Finishing',
+        ],
       },
       {
-        title: 'Furniture And Fixture Solutions',
+        id: 'bespoke-furniture-and-modular-systems',
+        numeral: 'III',
+        title: 'Bespoke Furniture & Modular Systems',
         description:
-          'Customized furniture, modular systems, and interior products aligned to project requirements, budgets, and contemporary design needs.',
+          'Custom-engineered furniture solutions designed for durability and aesthetic alignment, from executive boardrooms to modular retail fixtures.',
+        competencies: [
+          'Executive Furniture',
+          'Retail Fixtures',
+          'Modular Systems',
+          'Custom Joinery',
+        ],
       },
     ],
   },
+  showcase: [
+    {
+      title: 'Interior Design',
+      description:
+        'Transforming shells into refined workplaces, flagship retail environments, and executive interiors with controlled detailing.',
+      image: `${imageBase}/Home/home-gallery.jpeg`,
+    },
+    {
+      title: 'Residential Architecture',
+      description:
+        'Crafting enduring structures that balance user comfort, functional planning, and premium material expression.',
+      image: `${imageBase}/Library/Gallery.jpeg`,
+    },
+    {
+      title: 'Commercial Spaces',
+      description:
+        'Making offices and customer-facing environments feel operationally efficient, elegant, and brand-aligned.',
+      image: `${imageBase}/Jio Mess/jio-6.jpeg`,
+    },
+  ],
   gallery: [
     {
-      title: 'Library',
-      image: `${imageBase}/Library/Gallery.jpeg`,
-      category: 'Institutional Interior',
-    },
-    {
-      title: 'DCP Office FBD',
+      title: 'Commissionerate Of Police',
       image: `${imageBase}/CP Office/dsp-office-gallery.jpeg`,
-      category: 'Government Office',
+      category: 'The Heritage Series',
     },
     {
-      title: 'Jio Mess Interior',
+      title: 'Panchkula E-Library',
+      image: `${imageBase}/Library/Gallery.jpeg`,
+      category: 'The Heritage Series',
+    },
+    {
+      title: 'Tissot Experience Zone',
       image: `${imageBase}/Jio Mess/jio-6.jpeg`,
-      category: 'Commercial Interior',
+      category: 'The Luxury Series',
     },
     {
-      title: 'Home Interior',
+      title: 'Executive Interior Suite',
       image: `${imageBase}/Home/home-gallery.jpeg`,
-      category: 'Residential Interior',
+      category: 'The Corporate Series',
+    },
+    {
+      title: 'Citizen Brand Counter',
+      image: `${imageBase}/Jio Mess/jio-6.jpeg`,
+      category: 'The Luxury Series',
+    },
+    {
+      title: 'Conference Facility Upgrade',
+      image: `${imageBase}/Library/Gallery.jpeg`,
+      category: 'The Corporate Series',
     },
   ],
-  stats: [
-    { value: 132, label: 'Projects Completed Till Date' },
-    { value: 272, label: 'Notable Delivered Milestones' },
-    { value: 402, label: 'Projects Ongoing' },
+  projectSeries: [
+    {
+      title: 'The Heritage Series',
+      description:
+        'Institutional projects for government and public infrastructure including Commissionerate of Police and Panchkula E-Library.',
+    },
+    {
+      title: 'The Luxury Series',
+      description: 'High-end retail and brand flagships including Tissot, Citizen, and Seiko.',
+    },
+    {
+      title: 'The Corporate Series',
+      description: 'Modern workspace optimization and executive suites including Sony Music and CM Conference Facilities.',
+    },
   ],
-  whyChooseUs: [
+  testimonials: [
     {
-      title: 'Experienced Leadership',
-      description:
-        'The leadership team brings 25 years of experience in civil and interior works, adding strong project judgment and execution discipline.',
+      quote:
+        'GIS handled execution with rare discipline. The team kept design intent intact while maintaining practical site control through every handover stage.',
+      author: 'Corporate Delivery Lead',
+      company: 'Luxury Retail Rollout',
+      image: `${imageBase}/CP Office/dsp-office-gallery.jpeg`,
+      location: 'Delhi NCR',
     },
     {
-      title: 'End-To-End Solutions',
-      description:
-        'Planning, design, execution, and post-completion support are coordinated under one delivery model for fewer handoff risks.',
-    },
-    {
-      title: 'Quality Assurance',
-      description:
-        'Strict quality and safety standards guide every stage of work, from procurement to final finishing and project handover.',
-    },
-    {
-      title: 'Timely Delivery',
-      description:
-        'Execution is planned around deadlines without compromising workmanship, material standards, or site coordination quality.',
-    },
-    {
-      title: 'Client-Centric Approach',
-      description:
-        'Every project is shaped around client requirements, operational needs, and long-term usability rather than a one-size-fits-all process.',
-    },
-    {
-      title: 'Innovative Solutions',
-      description:
-        'Modern materials, practical detailing, and current methods are used to improve both functionality and the visual quality of each space.',
+      quote:
+        'Their ability to coordinate civil works, interior fit-out, and custom finishing through one accountable team removed a significant amount of project risk.',
+      author: 'Project Consultant',
+      company: 'Institutional Infrastructure Program',
+      image: `${imageBase}/Home/home-gallery.jpeg`,
+      location: 'Gurugram, Haryana',
     },
   ],
   clients: [
@@ -154,9 +213,34 @@ export const siteContent = {
     { name: 'Client 09', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869359151-client-9.png' },
     { name: 'Client 10', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869360304-client-10.png' },
   ],
+  contactSection: {
+    eyebrow: 'Contact Us | Connect with Experts',
+    title: 'Speak with Our Project Experts',
+    lead: 'Our team is ready to guide you through every stage of your infrastructure and interior project.',
+    consultationLine: '+91 9873342618',
+    cta: { label: 'Start Your Project', href: 'mailto:solutions@globalinfraa.com' },
+  },
+  contactForm: {
+    title: 'Request a Project Consultation',
+    fields: [
+      { label: 'Full Name', name: 'fullName', type: 'text' },
+      { label: 'Email Address', name: 'email', type: 'email' },
+      { label: 'Phone Number', name: 'phone', type: 'tel' },
+      { label: 'Project Location', name: 'location', type: 'text' },
+    ],
+    categories: [
+      'Turnkey Project',
+      'Civil Construction',
+      'Interior Fit-Out',
+      'Renovation / Upgrade',
+      'Project Management',
+    ],
+    submitLabel: 'Submit Request',
+    footnote: 'Our team will review your requirements and get back to you within 24 hours.',
+  },
   footer: {
     description:
-      'At Global Infra Solutions, we pride ourselves on being a trusted partner for civil and interior construction needs.',
-    creditLabel: 'Website inspiration based on the existing Global Infra Solutions static site.',
+      'Global Infra Solutions delivers civil infrastructure, premium fit-outs, and custom interior systems with one accountable project team.',
+    creditLabel: 'Crafted for GIS with a cinematic architecture-led presentation system.',
   },
 }
