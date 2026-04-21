@@ -171,6 +171,15 @@ figure {
   color: #6f6f6f;
 }
 
+.site-nav-toggle {
+  display: none;
+  border: 1px solid rgba(13, 20, 26, 0.12);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #fff;
+  cursor: pointer;
+}
+
 .hero-section {
   position: relative;
   min-height: 676px;
@@ -1032,6 +1041,10 @@ figure {
 }
 
 @media (max-width: 980px) {
+  :root {
+    --page-gutter: 40px;
+  }
+
   .split-section,
   .service-grid,
   .project-category-grid,
@@ -1058,7 +1071,9 @@ figure {
   }
 
   .header-inner {
-    min-height: 52px;
+    min-height: 56px;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .site-nav {
@@ -1089,12 +1104,211 @@ figure {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --page-gutter: 24px;
+  }
+
   .container {
-    width: min(100% - 32px, var(--page-width));
+    width: min(var(--page-width), calc(100% - var(--page-gutter)));
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .site-header {
+    position: sticky;
+  }
+
+  .header-inner {
+    position: relative;
+    min-height: 64px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-text {
+    gap: 10px;
+  }
+
+  .brand-text span {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .brand-text strong {
+    font-size: 14px;
+  }
+
+  .brand-text small {
+    font-size: 11px;
+  }
+
+  .site-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 0 4px;
+  }
+
+  .site-nav--open {
+    display: grid;
+  }
+
+  .site-nav a {
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--soft);
+  }
+
+  .hero-section {
+    min-height: 560px;
   }
 
   .hero-content {
-    padding: 72px 0;
+    padding: 96px 0 72px;
+  }
+
+  .eyebrow {
+    font-size: 13px;
+    letter-spacing: 0.09em;
+  }
+
+  .hero-content h1,
+  .projects-hero h1 {
+    margin-top: 18px;
+    font-size: clamp(31px, 10vw, 44px);
+    line-height: 1.05;
+  }
+
+  .hero-copy {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .projects-hero {
+    padding: 68px 0 28px;
+  }
+
+  .split-section {
+    gap: 28px;
+  }
+
+  .split-copy h2,
+  .section-heading h2,
+  .project-page__hero-copy h2,
+  .footer-brand h2 {
+    font-size: clamp(26px, 8vw, 34px);
+  }
+
+  .split-copy p,
+  .section-heading p,
+  .project-page__hero-copy p,
+  .footer-copy,
+  .footer-contact p,
+  .project-gallery-card__body p,
+  .service-card p {
+    font-size: 15px;
+  }
+
+  .section-heading {
+    margin-bottom: 26px;
+  }
+
+  .service-card-body,
+  .project-category-copy,
+  .project-gallery-card__body,
+  .testimonial-card__body,
+  .project-page__hero-copy {
+    padding: 20px;
+  }
+
+  .service-card h4,
+  .project-gallery-card__body h3 {
+    font-size: 19px;
+  }
+
+  .filter-bar {
+    justify-content: stretch;
+  }
+
+  .filter-select,
+  .filter-select select {
+    width: 100%;
+  }
+
+  .project-page {
+    gap: 18px;
+  }
+
+  .project-page__back {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-page__hero {
+    gap: 18px;
+  }
+
+  .project-page__hero-media img {
+    min-height: 260px;
+    border-radius: 20px;
+  }
+
+  .project-page__hero-meta {
+    gap: 10px;
+  }
+
+  .project-page__hero-meta span {
+    width: 100%;
+    text-align: center;
+  }
+
+  .project-page__image {
+    border-radius: 18px;
+  }
+
+  .project-page__image figcaption {
+    padding: 14px 16px 18px;
+    font-size: 14px;
+  }
+
+  .logo-chip {
+    min-height: 88px;
+    padding: 18px 16px;
+  }
+
+  .logo-chip img {
+    max-height: 44px;
+  }
+
+  .site-footer {
+    padding: 52px 0 24px;
+  }
+
+  .footer-grid {
+    gap: 24px;
+  }
+
+  .footer-form button {
+    width: 100%;
+    justify-content: center;
   }
 
   .gallery-grid,
@@ -1111,11 +1325,10 @@ figure {
     width: 100%;
   }
 
-  .brand-text div {
-    display: none;
-  }
-
-  .site-nav {
-    justify-content: flex-start;
+  .whatsapp-bubble {
+    right: 12px;
+    bottom: 12px;
+    min-width: 0;
+    padding: 14px 16px;
   }
 }

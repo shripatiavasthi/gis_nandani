@@ -5,7 +5,7 @@ export const siteContent = {
     name: 'Global Infra Solutions',
     shortName: 'GIS',
     logoText: 'Global Infra Solutions',
-    logoUrl: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774868633898-gis-logo.png',
+    logoUrl: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1774868633898-gis-logo.png',
   },
   contact: {
     phones: ['+91 9873342618', '+91 8860745145'],
@@ -40,7 +40,7 @@ export const siteContent = {
       { value: '402', label: 'Active site operations' },
     ],
     images: [
-      'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869047585-gis-about-hero.jpeg',
+      'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1774869047585-gis-about-hero.jpeg',
       `${imageBase}/Jio Mess/jio-6.jpeg`,
       `${imageBase}/Library/Gallery.jpeg`,
     ],
@@ -51,7 +51,7 @@ export const siteContent = {
       'At Global Infra Solutions, we deliver integrated construction and interior solutions designed to meet the evolving needs of modern businesses.',
       'From initial planning to final execution, we ensure every project is completed with efficiency, transparency, and uncompromised quality.',
     ],
-    image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1774869199162-gis-about-section.jpeg',
+    image: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1774869199162-gis-about-section.jpeg',
     pillars: [
       {
         title: 'Total Accountability',
@@ -202,16 +202,16 @@ export const siteContent = {
     },
   ],
   clients: [
-    { name: 'Client 01', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869356135-client-1.png' },
-    { name: 'Client 02', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869357328-client-2.png' },
-    { name: 'Client 03', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869358358-client-3.png' },
-    { name: 'Client 04', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869359503-client-4.png' },
-    { name: 'Client 05', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869360342-client-5.png' },
-    { name: 'Client 06', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869356199-client-6.png' },
-    { name: 'Client 07', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869357361-client-7.png' },
-    { name: 'Client 08', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869358283-client-8.png' },
-    { name: 'Client 09', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869359151-client-9.png' },
-    { name: 'Client 10', logo: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/clients/1774869360304-client-10.png' },
+    { name: 'Client 01', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869356135-client-1.png' },
+    { name: 'Client 02', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869357328-client-2.png' },
+    { name: 'Client 03', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869358358-client-3.png' },
+    { name: 'Client 04', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869359503-client-4.png' },
+    { name: 'Client 05', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869360342-client-5.png' },
+    { name: 'Client 06', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869356199-client-6.png' },
+    { name: 'Client 07', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869357361-client-7.png' },
+    { name: 'Client 08', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869358283-client-8.png' },
+    { name: 'Client 09', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869359151-client-9.png' },
+    { name: 'Client 10', logo: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/clients/1774869360304-client-10.png' },
   ],
   contactSection: {
     eyebrow: 'Contact Us | Connect with Experts',

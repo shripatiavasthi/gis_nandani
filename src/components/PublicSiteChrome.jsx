@@ -1,8 +1,16 @@
-import { NavLink } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import { siteContent } from '../data/siteContent'
 
 export function PublicSiteHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location.pathname, location.hash])
+
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -14,7 +22,21 @@ export function PublicSiteHeader() {
           </div>
         </NavLink>
 
-        <nav className="site-nav" aria-label="Primary navigation">
+        <button
+          type="button"
+          className="site-nav-toggle"
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
+          Menu
+        </button>
+
+        <nav
+          id="primary-navigation"
+          className={`site-nav${isMenuOpen ? ' site-nav--open' : ''}`}
+          aria-label="Primary navigation"
+        >
           <NavLink to="/">Home</NavLink>
           <a href="/#services">Services</a>
           <a href="/#contact">Contact</a>
