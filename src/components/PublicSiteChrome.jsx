@@ -15,7 +15,11 @@ export function PublicSiteHeader() {
     <header className="site-header">
       <div className="container header-inner">
         <NavLink className="brand brand-text" to="/" aria-label={siteContent.company.name}>
-          <span>{siteContent.company.shortName}</span>
+          <img
+            className="brand-logo"
+            src={siteContent.company.logoUrl}
+            alt={`${siteContent.company.name} logo`}
+          />
           <div>
             <strong>{siteContent.company.name}</strong>
             <small>Infrastructure | Interiors | Project Delivery</small>

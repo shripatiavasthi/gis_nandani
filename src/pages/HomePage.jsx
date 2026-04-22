@@ -12,7 +12,7 @@ import { fetchProjects } from '../features/projects/projectsSlice'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 const heroVideo =
-  'https://videos.pexels.com/video-files/7646443/7646443-uhd_3840_2160_25fps.mp4'
+  'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/videos/gis-hero-video.mp4'
 const heroPoster =
   'https://images.pexels.com/videos/7646443/adult-banking-blur-book-series-7646443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200'
 
