@@ -399,6 +399,9 @@ figure {
 
 .gallery-card-button {
   position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border: 0;
   padding: 0;
   border-radius: 18px;
@@ -411,7 +414,6 @@ figure {
 .gallery-card-button img {
   width: 100%;
   height: 100%;
-  min-height: 280px;
   object-fit: cover;
   transition: transform 180ms ease;
 }
@@ -557,17 +559,91 @@ figure {
   border-radius: 20px;
   background: #fff;
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
 .project-page__image img {
   width: 100%;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
 .project-page__image figcaption {
   padding: 16px 18px 20px;
   color: var(--muted);
+}
+
+.project-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background: rgba(13, 20, 26, 0.9);
+}
+
+.project-lightbox__figure {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 1080px);
+  margin: 0;
+}
+
+.project-lightbox__figure img {
+  width: 100%;
+  max-height: calc(100vh - 170px);
+  border-radius: 22px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-lightbox__figure figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #fff;
+}
+
+.project-lightbox__figure figcaption strong {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.project-lightbox__figure figcaption span {
+  color: rgba(255, 255, 255, 0.72);
+  white-space: nowrap;
+}
+
+.project-lightbox__close,
+.project-lightbox__nav {
+  position: absolute;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.project-lightbox__close {
+  top: 24px;
+  right: 24px;
+}
+
+.project-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.project-lightbox__nav--prev {
+  left: 24px;
+}
+
+.project-lightbox__nav--next {
+  right: 24px;
 }
 
 .project-page--empty {
@@ -1287,6 +1363,48 @@ figure {
   .project-page__image figcaption {
     padding: 14px 16px 18px;
     font-size: 14px;
+  }
+
+  .project-lightbox {
+    padding: 20px 14px;
+  }
+
+  .project-lightbox__close {
+    top: 14px;
+    right: 14px;
+  }
+
+  .project-lightbox__nav {
+    top: auto;
+    bottom: 84px;
+    transform: none;
+  }
+
+  .project-lightbox__nav--prev {
+    left: 14px;
+  }
+
+  .project-lightbox__nav--next {
+    right: 14px;
+  }
+
+  .project-lightbox__figure {
+    gap: 12px;
+  }
+
+  .project-lightbox__figure img {
+    max-height: calc(100vh - 210px);
+    border-radius: 18px;
+  }
+
+  .project-lightbox__figure figcaption {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 4px;
+  }
+
+  .project-lightbox__figure figcaption strong {
+    font-size: 16px;
   }
 
   .logo-chip {

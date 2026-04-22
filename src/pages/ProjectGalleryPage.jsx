@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 
 import {
@@ -16,6 +16,7 @@ export default function ProjectGalleryPage() {
   const { slug } = useParams()
   const location = useLocation()
   const { selectedProject, detailStatus } = useAppSelector((state) => state.projects)
+  const [activeImageIndex, setActiveImageIndex] = useState(null)
 
   const fallbackProjects = useMemo(
     () =>
@@ -57,6 +58,45 @@ export default function ProjectGalleryPage() {
     loadProject()
   }, [dispatch, fallbackProjects, location.state, slug])
 
+  useEffect(() => {
+    setActiveImageIndex(null)
+  }, [slug])
+
+  useEffect(() => {
+    if (activeImageIndex === null) {
+      return undefined
+    }
+
+    const handleKeyDown = (event) => {
+      const galleryLength = selectedProject?.galleryImages?.length || 0
+
+      if (!galleryLength) {
+        return
+      }
+
+      if (event.key === 'Escape') {
+        setActiveImageIndex(null)
+      }
+
+      if (event.key === 'ArrowRight') {
+        setActiveImageIndex((current) => ((current ?? 0) + 1) % galleryLength)
+      }
+
+      if (event.key === 'ArrowLeft') {
+        setActiveImageIndex((current) => ((current ?? 0) - 1 + galleryLength) % galleryLength)
+      }
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [activeImageIndex, selectedProject])
+
   if (!selectedProject || selectedProject.slug !== slug) {
     return (
       <div className="site-shell">
@@ -73,6 +113,25 @@ export default function ProjectGalleryPage() {
         <WhatsAppBubble />
       </div>
     )
+  }
+
+  const galleryImages = selectedProject.galleryImages || []
+  const activeImage = activeImageIndex !== null ? galleryImages[activeImageIndex] : null
+
+  const handleOpenImage = (index) => {
+    setActiveImageIndex(index)
+  }
+
+  const handleCloseLightbox = () => {
+    setActiveImageIndex(null)
+  }
+
+  const handlePreviousImage = () => {
+    setActiveImageIndex((current) => (current - 1 + galleryImages.length) % galleryImages.length)
+  }
+
+  const handleNextImage = () => {
+    setActiveImageIndex((current) => (current + 1) % galleryImages.length)
   }
 
   return (
@@ -111,8 +170,8 @@ export default function ProjectGalleryPage() {
             </section>
 
             <section className="project-page__gallery">
-              {selectedProject.galleryImages?.length ? (
-                selectedProject.galleryImages.map((image, index) => {
+              {galleryImages.length ? (
+                galleryImages.map((image, index) => {
                   const imageLabel =
                     image.caption || `${selectedProject.name} gallery image ${index + 1}`
 
@@ -120,6 +179,15 @@ export default function ProjectGalleryPage() {
                     <figure
                       key={image.key || `${selectedProject.slug}-${index + 1}`}
                       className="project-page__image"
+                      onClick={() => handleOpenImage(index)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault()
+                          handleOpenImage(index)
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
                     >
                       <LazyImage src={image.url} alt={imageLabel} />
                       <figcaption>{imageLabel}</figcaption>
@@ -135,6 +203,69 @@ export default function ProjectGalleryPage() {
           </div>
         </section>
       </main>
+
+      {activeImage ? (
+        <div
+          className="project-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeImage.caption || `${selectedProject.name} image viewer`}
+          onClick={handleCloseLightbox}
+        >
+          <button
+            type="button"
+            className="project-lightbox__close"
+            aria-label="Close image viewer"
+            onClick={handleCloseLightbox}
+          >
+            Close
+          </button>
+
+          {galleryImages.length > 1 ? (
+            <>
+              <button
+                type="button"
+                className="project-lightbox__nav project-lightbox__nav--prev"
+                aria-label="Previous image"
+                onClick={(event) => {
+                  event.stopPropagation()
+                  handlePreviousImage()
+                }}
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                className="project-lightbox__nav project-lightbox__nav--next"
+                aria-label="Next image"
+                onClick={(event) => {
+                  event.stopPropagation()
+                  handleNextImage()
+                }}
+              >
+                Next
+              </button>
+            </>
+          ) : null}
+
+          <figure
+            className="project-lightbox__figure"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <LazyImage
+              src={activeImage.url}
+              alt={activeImage.caption || `${selectedProject.name} image ${activeImageIndex + 1}`}
+              eager
+            />
+            <figcaption>
+              <strong>{activeImage.caption || `${selectedProject.name} image ${activeImageIndex + 1}`}</strong>
+              <span>
+                {activeImageIndex + 1} / {galleryImages.length}
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      ) : null}
 
       <PublicSiteFooter />
       <WhatsAppBubble />
