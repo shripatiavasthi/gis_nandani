@@ -139,19 +139,22 @@ export default function ProjectGalleryPage() {
       <PublicSiteHeader />
 
       <main>
-        <section className="projects-hero">
-          <div className="container">
-            <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p>
-            <h1>{selectedProject.name}</h1>
-            <p className="hero-copy narrow">{selectedProject.shortDescription}</p>
-          </div>
-        </section>
-
         <section className="section">
           <div className="container project-page">
-            <Link className="project-page__back" to="/projects">
-              Back to Projects
-            </Link>
+            <section className="project-page__intro">
+              <div className="project-page__intro-copy">
+                <Link className="project-page__back" to="/projects">
+                  Back to Projects
+                </Link>
+                <h1>{selectedProject.name}</h1>
+                <p className="project-page__summary">{selectedProject.shortDescription}</p>
+              </div>
+
+              <div className="project-page__hero-meta">
+                <span>Curated project gallery</span>
+                <span>{selectedProject.galleryImages?.length || 0} visual assets</span>
+              </div>
+            </section>
 
             <section className="project-page__hero">
               <div className="project-page__hero-media">
@@ -160,12 +163,11 @@ export default function ProjectGalleryPage() {
 
               <div className="project-page__hero-copy">
                 <p className="eyebrow project-page__eyebrow">Delivered Project</p>
-                <h2>{selectedProject.name}</h2>
-                <p>{selectedProject.shortDescription}</p>
-                <div className="project-page__hero-meta">
-                  <span>Curated project gallery</span>
-                  <span>{selectedProject.galleryImages?.length || 0} visual assets</span>
-                </div>
+                <h2>Project Snapshot</h2>
+                <p>
+                  A focused preview of the delivered site before you move through the full visual
+                  gallery.
+                </p>
               </div>
             </section>
 

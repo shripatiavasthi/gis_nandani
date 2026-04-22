@@ -41,6 +41,8 @@ const normalizeSeries = (project) => {
   return 'The Corporate Series'
 }
 
+const getProjectImage = (project) => project?.coverImage?.url || project?.image || ''
+
 export default function HomePage() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -74,6 +76,27 @@ export default function HomePage() {
     ...project,
     series: project.series || normalizeSeries(project),
   }))
+
+  const solutionImages = useMemo(() => {
+    const apiImages = galleryItems.map(getProjectImage).filter(Boolean)
+    const fallbackImages = siteContent.showcase.map((item) => item.image)
+    const imagePool = apiImages.length ? apiImages : fallbackImages
+
+    return siteContent.solutions.items.map((_, index) => imagePool[index % imagePool.length])
+  }, [galleryItems])
+
+  const projectSeriesImages = useMemo(
+    () =>
+      siteContent.projectSeries.map((series, index) => {
+        const matchingProject = galleryItems.find((project) => project.series === series.title)
+        return (
+          getProjectImage(matchingProject) ||
+          getProjectImage(galleryItems[index]) ||
+          siteContent.gallery[index % siteContent.gallery.length].image
+        )
+      }),
+    [galleryItems],
+  )
 
   const availableSeries = ['All Projects', ...siteContent.projectSeries.map((item) => item.title)]
   const filteredProjects =
@@ -137,10 +160,7 @@ export default function HomePage() {
             <div className="service-grid">
               {siteContent.solutions.items.map((solution, index) => (
                 <article key={solution.id} className="service-card">
-                  <LazyImage
-                    src={siteContent.showcase[index % siteContent.showcase.length].image}
-                    alt={solution.title}
-                  />
+                  <LazyImage src={solutionImages[index]} alt={solution.title} />
                   <div className="service-card-body">
                     <h4>{solution.title}</h4>
                     <p>{solution.description}</p>
@@ -161,10 +181,7 @@ export default function HomePage() {
             <div className="project-category-grid">
               {siteContent.projectSeries.map((series, index) => (
                 <article key={series.title} className="project-category-card">
-                  <LazyImage
-                    src={siteContent.gallery[index % siteContent.gallery.length].image}
-                    alt={series.title}
-                  />
+                  <LazyImage src={projectSeriesImages[index]} alt={series.title} />
                   <div className="project-category-copy">
                     <h3>{series.title}</h3>
                     <p>{series.description}</p>
