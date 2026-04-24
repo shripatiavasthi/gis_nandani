@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -47,7 +47,6 @@ export default function HomePage() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { items, status, error } = useAppSelector((state) => state.projects)
-  const [selectedSeries, setSelectedSeries] = useState('All Projects')
 
   const fallbackProjects = useMemo(
     () =>
@@ -77,6 +76,9 @@ export default function HomePage() {
     series: project.series || normalizeSeries(project),
   }))
 
+  const featuredGalleryProjects = galleryItems.slice(0, 6)
+  const marqueeClients = [...siteContent.clients, ...siteContent.clients]
+
   const solutionImages = useMemo(() => {
     const apiImages = galleryItems.map(getProjectImage).filter(Boolean)
     const fallbackImages = siteContent.showcase.map((item) => item.image)
@@ -97,12 +99,6 @@ export default function HomePage() {
       }),
     [galleryItems],
   )
-
-  const availableSeries = ['All Projects', ...siteContent.projectSeries.map((item) => item.title)]
-  const filteredProjects =
-    selectedSeries === 'All Projects'
-      ? galleryItems
-      : galleryItems.filter((project) => project.series === selectedSeries)
 
   const galleryError =
     status === 'failed' ? 'Project API is not reachable yet. Showing sample cards for now.' : ''
@@ -126,6 +122,9 @@ export default function HomePage() {
             <p className="eyebrow subtitle">{siteContent.hero.eyebrow}</p>
             <h1>{siteContent.hero.title}</h1>
             <p className="hero-copy">{siteContent.hero.subHeadline}</p>
+            <a className="hero-cta" href={siteContent.hero.primaryCta.href}>
+              {siteContent.hero.primaryCta.label}
+            </a>
           </div>
         </section>
 
@@ -136,25 +135,24 @@ export default function HomePage() {
             </div>
             <div className="split-copy">
               <h2>{siteContent.intro.title}</h2>
-              <blockquote className="intro-quote">{siteContent.intro.body[0]}</blockquote>
-              <p className="intro-support">{siteContent.intro.body[1]}</p>
-              <div id="services" className="section-anchor" />
-              <h3>The GIS Edge</h3>
-              <ul className="value-pillar-list">
-                {siteContent.intro.pillars.map((pillar) => (
-                  <li key={pillar.title}>
-                    <strong>{pillar.title}:</strong> {pillar.description}
-                  </li>
+              <p className="intro-support">{siteContent.intro.body[0]}</p>
+              <div className="intro-stats">
+                {siteContent.featureStats.map((item) => (
+                  <div key={item.label} className="intro-stat">
+                    <strong>{item.value}</strong>
+                    <span>{item.label}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+              <div id="services" className="section-anchor" />
             </div>
           </div>
         </section>
 
         <section className="section soft-section">
           <div className="container">
-            <div className="section-heading">
-              <h2>{siteContent.solutions.eyebrow}</h2>
+            <div className="section-heading centered">
+              <h2>Our Services</h2>
               <p>{siteContent.solutions.title}</p>
             </div>
             <div className="service-grid">
@@ -164,7 +162,6 @@ export default function HomePage() {
                   <div className="service-card-body">
                     <h4>{solution.title}</h4>
                     <p>{solution.description}</p>
-                    <p className="service-meta">{solution.competencies.join(' | ')}</p>
                   </div>
                 </article>
               ))}
@@ -195,40 +192,24 @@ export default function HomePage() {
         <section className="section soft-section">
           <div className="container">
             <div className="section-heading centered">
-              <h2>Gallery</h2>
-              <p>Designs that define spaces.</p>
+              <h2>{siteContent.gallerySection.title}</h2>
+              <p>{siteContent.gallerySection.description}</p>
             </div>
 
-            <div className="filter-bar">
-              <label className="filter-select">
-                <span className="sr-only">Select project series</span>
-                <select value={selectedSeries} onChange={(event) => setSelectedSeries(event.target.value)}>
-                  {availableSeries.map((series) => (
-                    <option key={series} value={series}>
-                      {series}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            <div className="gallery-grid gallery-grid--projects">
-              {filteredProjects.map((project, index) => (
+            <div className="gallery-grid gallery-grid--feature">
+              {featuredGalleryProjects.map((project, index) => (
                 <button
                   key={project.slug}
-                  className="gallery-card-button"
+                  className="gallery-card-button gallery-card-button--feature"
                   onClick={() => handleSelectProject(project)}
                   type="button"
+                  aria-label={`Open ${project.name || project.title}`}
                 >
                   <LazyImage
                     src={project.coverImage?.url || project.image}
                     alt={project.name || project.title}
                     eager={index < 2}
                   />
-                  <span className="gallery-card-overlay">
-                    <strong>{project.name || project.title}</strong>
-                    <small>{project.shortDescription || project.category || 'Delivered Project'}</small>
-                  </span>
                 </button>
               ))}
             </div>
@@ -242,32 +223,18 @@ export default function HomePage() {
         <section className="section testimonial-section" id="feedback">
           <div className="container">
             <div className="section-heading centered">
-              <h2>Trusted Across Sectors</h2>
-              <p>Selected brands, institutions, and workplace environments across our project portfolio.</p>
+              <h2>{siteContent.logoMarquee.title}</h2>
+              <p>{siteContent.logoMarquee.description}</p>
             </div>
 
-            <div className="testimonial-grid">
-              {siteContent.testimonials.map((item) => (
-                <article key={item.author} className="testimonial-card">
-                  <LazyImage src={item.image} alt={item.company} />
-                  <div className="testimonial-card__body">
-                    <div className="stars">★★★★★</div>
-                    <p>{item.quote}</p>
-                    <strong>{item.author}</strong>
-                    <span>
-                      {item.company} | {item.location}
-                    </span>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <div className="logo-strip">
-              {siteContent.clients.slice(0, 8).map((client) => (
-                <article key={client.name} className="logo-chip">
-                  <img src={client.logo} alt={client.name} />
-                </article>
-              ))}
+            <div className="logo-marquee" aria-label="Client logos moving left to right">
+              <div className="logo-marquee__track">
+                {marqueeClients.map((client, index) => (
+                  <article key={`${client.name}-${index}`} className="logo-chip">
+                    <img src={client.logo} alt={client.name} />
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>

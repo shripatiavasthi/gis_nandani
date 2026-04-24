@@ -3,6 +3,34 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 import { siteContent } from '../data/siteContent'
 
+function SocialIcon({ label }) {
+  const iconMap = {
+    Facebook: (
+      <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.6 1.5-1.6H16V4.8c-.3 0-.9-.1-1.8-.1-2.9 0-4.8 1.7-4.8 4.9V11H7v3h2.4v7h4.1Z" />
+    ),
+    Instagram: (
+      <>
+        <rect x="4.5" y="4.5" width="15" height="15" rx="4" />
+        <circle cx="12" cy="12" r="3.4" />
+        <circle cx="17.2" cy="6.8" r="1" />
+      </>
+    ),
+    LinkedIn: (
+      <>
+        <rect x="4.5" y="9" width="3.3" height="10" />
+        <circle cx="6.15" cy="6.4" r="1.6" />
+        <path d="M10.2 9h3.1v1.4h.1c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.2 2.2 4.2 5.2V19h-3.3v-4.6c0-1.1 0-2.5-1.6-2.5s-1.8 1.2-1.8 2.4V19h-3.3V9Z" />
+      </>
+    ),
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      {iconMap[label]}
+    </svg>
+  )
+}
+
 export function PublicSiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
@@ -63,36 +91,34 @@ export function PublicSiteFooter() {
         </div>
 
         <div className="footer-contact">
-          <span className="footer-label">{siteContent.contactSection.eyebrow.toLowerCase()}</span>
+          <span className="footer-label">Contact</span>
           <p>Headquarters: {siteContent.contact.headquarters}</p>
-          <p>Direct Inquiry: {siteContent.contact.emails[0]}</p>
+          <p>Direct Inquiry: {siteContent.contact.emails[1]}</p>
           <p>Consultation Line: {siteContent.contactSection.consultationLine}</p>
         </div>
 
-        <div className="footer-form">
-          <span className="footer-label">{siteContent.contactForm.title.toLowerCase()}</span>
-          <form onSubmit={(event) => event.preventDefault()}>
-            {siteContent.contactForm.fields.map((field) => (
-              <label key={field.name}>
-                {field.label}
-                <input type={field.type} name={field.name} placeholder={field.label} />
-              </label>
+        <div className="footer-details">
+          <span className="footer-label">Reach GIS</span>
+          <p>
+            <strong>Address:</strong> {siteContent.contact.headquarters}
+          </p>
+          <p>
+            <strong>Email:</strong>{' '}
+            <a href={`mailto:${siteContent.contact.emails[0]}`}>{siteContent.contact.emails[0]}</a>
+          </p>
+          <p>
+            <strong>Call us:</strong>{' '}
+            <a href={`tel:${siteContent.contact.phones[0].replace(/\s+/g, '')}`}>
+              {siteContent.contact.phones[0]}
+            </a>
+          </p>
+          <div className="footer-socials" aria-label="GIS social links">
+            {siteContent.socialLinks.map((item) => (
+              <a key={item.label} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>
+                <SocialIcon label={item.label} />
+              </a>
             ))}
-
-            <label>
-              Project Category
-              <select name="projectCategory" defaultValue={siteContent.contactForm.categories[0]}>
-                {siteContent.contactForm.categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <button type="submit">{siteContent.contactForm.submitLabel}</button>
-          </form>
-          <p className="footer-form-note">{siteContent.contactForm.footnote}</p>
+          </div>
         </div>
       </div>
       <div className="container footer-bottom">© 2026. All rights reserved.</div>

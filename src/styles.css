@@ -119,17 +119,17 @@ figure {
   align-items: center;
 }
 
-.brand-text {
-  gap: 12px;
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .brand-logo {
   width: 54px;
   height: 54px;
   object-fit: contain;
   flex-shrink: 0;
+}
+
+.brand-text {
+  gap: 12px;
+  color: var(--ink);
+  text-decoration: none;
 }
 
 .brand-text strong,
@@ -154,6 +154,7 @@ figure {
   align-items: center;
   gap: 25px;
   font-size: 15px;
+  font-weight: 500;
 }
 
 .site-nav a {
@@ -234,6 +235,34 @@ figure {
   font-size: 18px;
 }
 
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  margin-top: 36px;
+  padding: 18px 34px;
+  border-radius: 999px;
+  background: #f3b90f;
+  color: #111;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 16px 30px rgba(243, 185, 15, 0.25);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background: #ffc61a;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(243, 185, 15, 0.34);
+}
+
 .hero-copy.narrow {
   color: var(--muted);
 }
@@ -256,9 +285,9 @@ figure {
 
 .split-visual img {
   width: 100%;
-  height: 480px;
+  height: 520px;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 0;
 }
 
 .split-copy h2,
@@ -275,6 +304,18 @@ figure {
 .split-copy h2,
 .section-heading h2 {
   font-size: clamp(28px, 4vw, 42px);
+}
+
+.split-copy {
+  display: grid;
+  gap: 28px;
+}
+
+.split-copy h2 {
+  max-width: 20ch;
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
 }
 
 .split-copy p,
@@ -351,6 +392,11 @@ figure {
   padding: 24px;
 }
 
+.service-card-body {
+  display: grid;
+  gap: 12px;
+}
+
 .service-card h4,
 .project-gallery-card__body h3 {
   margin: 0 0 12px;
@@ -390,11 +436,23 @@ figure {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.gallery-grid--feature {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.gallery-card-button--feature {
+  aspect-ratio: 1.35 / 1;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
 .gallery-card-button {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
   border: 0;
   padding: 0;
   border-radius: 18px;
@@ -414,25 +472,6 @@ figure {
 .gallery-card-button:hover img,
 .gallery-card-button:focus-visible img {
   transform: scale(1.03);
-}
-
-.gallery-card-overlay {
-  position: absolute;
-  inset: auto 0 0;
-  display: grid;
-  gap: 4px;
-  padding: 18px;
-  background: linear-gradient(180deg, transparent, rgba(13, 20, 26, 0.82));
-  color: #fff;
-  text-align: left;
-}
-
-.gallery-card-overlay strong {
-  font-size: 18px;
-}
-
-.gallery-card-overlay small {
-  color: rgba(255, 255, 255, 0.86);
 }
 
 .section-note {
@@ -685,28 +724,17 @@ figure {
   color: var(--muted);
 }
 
-.testimonial-card img {
-  height: 220px;
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 
-.testimonial-card__body {
-  display: grid;
-  gap: 10px;
-}
-
-.stars {
-  font-size: 18px;
-  letter-spacing: 0.2em;
-}
-
-.testimonial-card__body span {
-  color: var(--muted);
-}
-
-.logo-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
   gap: 16px;
+  animation: logo-marquee 28s linear infinite reverse;
 }
 
 .logo-chip {
@@ -714,6 +742,7 @@ figure {
   align-items: center;
   justify-content: center;
   min-height: 112px;
+  min-width: 200px;
   padding: 22px 18px;
   border-radius: 16px;
   background: #fff;
@@ -763,42 +792,67 @@ figure {
   color: rgba(255, 255, 255, 0.85);
 }
 
-.footer-form form {
+.footer-details {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
-.footer-form label {
-  display: grid;
-  gap: 8px;
+.footer-details p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-details a {
   color: #fff;
-  font-size: 16px;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
 }
 
-.footer-form input,
-.footer-form select {
-  width: 100%;
-  border: 1px solid rgb(184, 192, 204);
-  border-radius: 10px;
-  padding: 14px 16px;
-  color: var(--ink);
-  background: #fff;
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 6px;
 }
 
-.footer-form-note {
-  margin-top: 16px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-}
-
-.footer-form button {
-  width: fit-content;
-  border: 0;
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: #6f6f6f;
-  color: #fff;
-  padding: 14px 26px;
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:focus-visible {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-socials svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.footer-socials a[aria-label='Facebook'] svg path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-socials a[aria-label='LinkedIn'] svg rect:first-child,
+.footer-socials a[aria-label='LinkedIn'] svg path {
+  fill: currentColor;
+  stroke: none;
 }
 
 .footer-bottom {
@@ -807,6 +861,16 @@ figure {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.85);
   font-size: 14px;
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .whatsapp-bubble {
@@ -825,42 +889,49 @@ figure {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.intro-quote {
-  margin: 24px 0 16px;
-  padding-left: 18px;
-  border-left: 3px solid var(--ink);
-  color: var(--ink);
-  font-size: 20px;
-  line-height: 1.5;
-}
-
 .intro-support {
-  margin-bottom: 28px;
+  max-width: 28ch;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.42;
 }
 
-.value-pillar-list {
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
+.intro-stats {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 14px;
 }
 
-.value-pillar-list li {
+.intro-stat {
   position: relative;
-  padding-left: 18px;
-  color: var(--muted);
+  display: grid;
+  gap: 8px;
+  padding-right: 24px;
 }
 
-.value-pillar-list li::before {
-  content: '';
+.intro-stat:not(:last-child)::after {
+  content: "";
   position: absolute;
-  top: 0.72em;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ink);
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(13, 20, 26, 0.26);
+}
+
+.intro-stat strong {
+  color: #e7ab14;
+  font-size: clamp(34px, 3.8vw, 48px);
+  line-height: 1;
+  font-weight: 700;
+}
+
+.intro-stat span {
+  max-width: 9ch;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.05;
 }
 
 .route-loader {
@@ -1166,9 +1237,12 @@ figure {
 
   .gallery-grid,
   .gallery-grid--projects,
-  .logo-strip,
   .project-page__gallery,
   .crm-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid--feature {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1189,11 +1263,33 @@ figure {
     justify-content: flex-end;
   }
 
+  .brand-logo {
+    width: 82px;
+    height: 82px;
+  }
+
   .split-visual img,
   .service-card img,
   .project-category-card img {
     height: auto;
     aspect-ratio: 5 / 4;
+  }
+
+  .intro-stats {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .intro-stat {
+    padding-right: 0;
+    padding-bottom: 18px;
+  }
+
+  .intro-stat:not(:last-child)::after {
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
   }
 
   .crm-sidebar {
@@ -1467,21 +1563,18 @@ figure {
     gap: 24px;
   }
 
-  .footer-form button {
-    width: 100%;
-    justify-content: center;
-  }
-
   .gallery-grid,
   .gallery-grid--projects,
   .project-gallery-grid,
-  .logo-strip,
   .project-page__gallery,
   .crm-gallery-grid {
     grid-template-columns: 1fr;
   }
 
-  .footer-form button,
+  .gallery-grid--feature {
+    grid-template-columns: 1fr;
+  }
+
   .whatsapp-bubble {
     width: 100%;
   }

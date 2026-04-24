@@ -8,9 +8,10 @@ export const siteContent = {
     logoUrl: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1774868633898-gis-logo.png',
   },
   contact: {
-    phones: ['+91 9873342618', '+91 8860745145'],
-    emails: ['solutions@globalinfraa.com', 'globalinfrasolu@gmail.com'],
-    headquarters: '[Insert Address]',
+    phones: ['+91 9873342618'],
+    emails: ['globalinfrasolu@gmail.com', 'solutions@globalinfraa.com'],
+    headquarters:
+      'Tower T03-521, 5th floor, RPS Infinia, 12th Avenue, 12/6 Milestone, Mathura Road, Sarai Khawaja, Faridabad 121013',
   },
   socialLinks: [
     { label: 'Facebook', href: 'https://www.facebook.com/share/17sgvvLmz2/?mibextid=wwXIfr' },
@@ -27,12 +28,12 @@ export const siteContent = {
   ],
   hero: {
     eyebrow: 'Turnkey Infrastructure And Interior Delivery',
-    title: 'Your Global Partner for Turnkey Infrastructure & Interior Solutions.',
+    title: 'Global Partner for Turnkey Infrastructure & Interior Solutions.',
     subHeadline:
       'From foundational civil engineering to high-end corporate interiors, we deliver precision-led environments for brands that lead the world.',
     description:
       'Global Infra Solutions brings together civil execution, interior fit-outs, and bespoke furniture systems under one accountable delivery framework.',
-    primaryCta: { label: 'Start Your Project', href: '#contact' },
+    primaryCta: { label: 'Get in touch', href: '#contact' },
     secondaryCta: { label: 'View Projects', href: '#projects' },
     metrics: [
       { value: '25+', label: 'Years of cross-sector expertise' },
@@ -46,7 +47,7 @@ export const siteContent = {
     ],
   },
   intro: {
-    title: 'Integrated execution for ambitious infrastructure and interior briefs.',
+    title: 'Creating spaces that stand beyond time',
     body: [
       'At Global Infra Solutions, we deliver integrated construction and interior solutions designed to meet the evolving needs of modern businesses.',
       'From initial planning to final execution, we ensure every project is completed with efficiency, transparency, and uncompromised quality.',
@@ -68,8 +69,9 @@ export const siteContent = {
     ],
   },
   featureStats: [
-    { value: '100+', label: 'Projects Across Sectors' },
-    { value: '25+', label: 'Years Combined Leadership' },
+    { value: '25+', label: 'Years of combined experience' },
+    { value: '113', label: 'Projects completed' },
+    { value: '13', label: 'Projects ongoing' },
   ],
   solutions: {
     eyebrow: 'Services | Strategic Solutions',
@@ -242,5 +244,14 @@ export const siteContent = {
     description:
       'Global Infra Solutions delivers civil infrastructure, premium fit-outs, and custom interior systems with one accountable project team.',
     creditLabel: 'Crafted for GIS with a cinematic architecture-led presentation system.',
+  },
+  gallerySection: {
+    eyebrow: 'Project Gallery',
+    title: 'Gallery',
+    description: 'Explore our stunning residential designs and elegant interiors.',
+  },
+  logoMarquee: {
+    title: 'Trusted By Our Clients',
+    description: 'Brands and institutions that have partnered with GIS across execution-led projects.',
   },
 }
