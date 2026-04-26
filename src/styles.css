@@ -161,10 +161,16 @@ figure {
 
 .site-nav a {
   color: var(--ink);
+  transition: font-weight 120ms ease;
 }
 
 .site-nav a.active {
   color: #6f6f6f;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  font-weight: 700;
 }
 
 .site-nav-divider {
