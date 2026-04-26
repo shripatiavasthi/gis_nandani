@@ -150,7 +150,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section soft-section">
+        <section className="section services-section">
           <div className="container">
             <div className="section-heading centered">
               <h2>Our Services</h2>
