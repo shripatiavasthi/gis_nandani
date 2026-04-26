@@ -104,10 +104,10 @@ export function PublicSiteFooter() {
     <footer id="contact" className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <h2>{siteContent.company.shortName}</h2>
+          {/* <h2>{siteContent.company.shortName}</h2> */}
           <h3>{siteContent.company.name}</h3>
-          <p>Infrastructure | Interior Fit-Outs | Modular Delivery</p>
-          <p className="footer-copy">{siteContent.contactSection.lead}</p>
+          <p className="footer-tagline">Infrastructure | Interior Fit-Outs | Modular Delivery</p>
+          {/* <p className="footer-copy">{siteContent.contactSection.lead}</p> */}
         </div>
 
         <div className="footer-contact">

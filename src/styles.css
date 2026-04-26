@@ -402,6 +402,10 @@ figure {
   /* gap: 18px; */
 }
 
+.footer-tagline {
+  color: #fff !important;
+}
+
 .about-page__blocks {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
