@@ -738,6 +738,29 @@ figure {
   height: 280px;
 }
 
+.project-gallery-card__body {
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.project-gallery-card__body h3,
+.project-gallery-card__body p {
+  transition: color 180ms ease;
+}
+
+.project-gallery-card:hover .project-gallery-card__body,
+.project-gallery-card:focus-visible .project-gallery-card__body {
+  background: #f3b90f;
+}
+
+.project-gallery-card:hover .project-gallery-card__body h3,
+.project-gallery-card:hover .project-gallery-card__body p,
+.project-gallery-card:focus-visible .project-gallery-card__body h3,
+.project-gallery-card:focus-visible .project-gallery-card__body p {
+  color: #111;
+}
+
 .project-gallery-card__body span,
 .project-page__hero-meta span,
 .project-page__eyebrow,
