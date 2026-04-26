@@ -163,7 +163,7 @@ export default function ProjectGalleryPage() {
 
               <div className="project-page__hero-copy">
                 <p className="eyebrow project-page__eyebrow">Delivered Project</p>
-                <h2>Project Snapshot</h2>
+                {/* <h2>Project Snapshot</h2> */}
                 <p>
                   A focused preview of the delivered site before you move through the full visual
                   gallery.
