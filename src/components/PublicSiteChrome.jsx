@@ -94,8 +94,8 @@ export function PublicSiteFooter() {
         <div className="footer-contact">
           <span className="footer-label">Contact</span>
           <p>{siteContent.contact.headquarters}</p>
-          <p>Direct Inquiry: {siteContent.contact.emails[1]}</p>
-          <p>Consultation Line: {siteContent.contactSection.consultationLine}</p>
+          <p>{siteContent.contact.emails[0]}</p>
+          <p>Phone No.: {siteContent.contactSection.consultationLine}</p>
         </div>
 
         <div className="footer-details">
@@ -103,16 +103,16 @@ export function PublicSiteFooter() {
           {/* <p> */}
             {/* {siteContent.contact.headquarters} */}
           {/* </p> */}
-          <p>
+          {/* <p>
             <strong>Email:</strong>{' '}
             <a href={`mailto:${siteContent.contact.emails[0]}`}>{siteContent.contact.emails[0]}</a>
-          </p>
-          <p>
+          </p> */}
+          {/* <p>
             <strong>Call us:</strong>{' '}
             <a href={`tel:${siteContent.contact.phones[0].replace(/\s+/g, '')}`}>
               {siteContent.contact.phones[0]}
             </a>
-          </p>
+          </p> */}
           <div className="footer-socials" aria-label="GIS social links">
             {siteContent.socialLinks.map((item) => (
               <a key={item.label} href={item.href} target="_blank" rel="noreferrer" aria-label={item.label}>

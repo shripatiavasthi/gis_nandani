@@ -9,7 +9,7 @@ export const siteContent = {
   },
   contact: {
     phones: ['+91 9873342618'],
-    emails: ['globalinfrasolu@gmail.com', 'solutions@globalinfraa.com'],
+    emails: ['solutions@globalinfraa.com'],
     headquarters:
       'Tower T03-521, 5th floor, RPS Infinia, 12th Avenue, 12/6 Milestone, Mathura Road, Sarai Khawaja, Faridabad 121013',
   },
