@@ -858,7 +858,7 @@ figure {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding-top: 6px;
+  margin-top: -8px;
 }
 
 .footer-socials a {
