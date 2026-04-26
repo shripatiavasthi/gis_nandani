@@ -199,9 +199,13 @@ figure {
 }
 
 .hero-content {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
   z-index: 1;
-  padding: 96px 0;
+  /* padding: 96px 0; */
   text-align: center;
   color: #fff;
 }
@@ -222,7 +226,7 @@ figure {
 .hero-content h1,
 .projects-hero h1 {
   margin: 24px auto 16px;
-  max-width: 760px;
+  max-width: 800px;
   font-size: clamp(38px, 5vw, 45px);
   line-height: 1.1;
   font-weight: 600;

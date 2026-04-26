@@ -122,6 +122,7 @@ export default function HomePage() {
             {/* <p className="eyebrow subtitle">{siteContent.hero.eyebrow}</p> */}
             <h1>{siteContent.hero.title}</h1>
             <p className="hero-copy">{siteContent.hero.subHeadline}</p>
+            <p className="hero-copy">{siteContent.hero.subHeadlineNew}</p>
             <a className="hero-cta" href={siteContent.hero.primaryCta.href}>
               {siteContent.hero.primaryCta.label}
             </a>
