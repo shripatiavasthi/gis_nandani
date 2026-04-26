@@ -31,6 +31,14 @@ function SocialIcon({ label }) {
   )
 }
 
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6.6 10.8a16.5 16.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24c1.08.36 2.22.54 3.4.54a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.52 21 3 13.48 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.18.18 2.32.54 3.4a1 1 0 0 1-.24 1l-2.2 2.4Z" />
+    </svg>
+  )
+}
+
 export function PublicSiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
@@ -74,6 +82,17 @@ export function PublicSiteHeader() {
           <a href="/#services">Services</a>
           <NavLink to="/projects">Projects</NavLink>
           <NavLink to="/contact">Contact</NavLink>
+          <span className="site-nav-divider" aria-hidden="true">
+            |
+          </span>
+          <a
+            className="site-nav-phone"
+            href={`tel:${siteContent.contact.phones[0].replace(/\s+/g, '')}`}
+            aria-label={`Call ${siteContent.contact.phones[0]}`}
+          >
+            <PhoneIcon />
+            <span>{siteContent.contact.phones[0]}</span>
+          </a>
         </nav>
       </div>
     </header>

@@ -167,6 +167,23 @@ figure {
   color: #6f6f6f;
 }
 
+.site-nav-divider {
+  color: rgba(13, 20, 26, 0.28);
+}
+
+.site-nav-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.site-nav-phone svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
 .site-nav-toggle {
   display: none;
   border: 1px solid rgba(13, 20, 26, 0.12);
