@@ -120,10 +120,12 @@ figure {
 }
 
 .brand-logo {
-  width: 136px;
-  height: 72px;
-  object-fit: contain;
-  flex-shrink: 0;
+ margin-top: 55px;
+ width: 131px;
+ height: 125px;
+ object-fit: contain;
+ flex-shrink: 0;
+ position: absolute;
 }
 
 .brand-text {
