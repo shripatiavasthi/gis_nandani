@@ -315,7 +315,7 @@ figure {
 .split-copy {
   height: -webkit-fill-available;
   display: grid;
-  gap: 28px;
+  /* gap: 28px; */
 }
 
 .split-copy h2 {
@@ -897,7 +897,6 @@ figure {
 }
 
 .intro-support {
-  max-width: 28ch;
   color: var(--ink);
   font-size: 18px;
   line-height: 1.42;
@@ -907,13 +906,13 @@ figure {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  padding-top: 14px;
+  /* padding-top: 14px; */
 }
 
 .intro-stat {
   position: relative;
   display: grid;
-  gap: 8px;
+  /* gap: 8px; */
   padding-right: 24px;
 }
 
