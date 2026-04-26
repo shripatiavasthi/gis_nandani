@@ -33,7 +33,7 @@ export default function AboutPage() {
 
             <div className="split-copy about-page__copy">
               {/* <p className="eyebrow">Company Profile</p> */}
-              <h2>About Global Infra Solutions</h2>
+              {/* <h2>About Global Infra Solutions</h2> */}
               <p>
                 Global Infra Solutions stands at the intersection of precision engineering and
                 refined execution-delivering bespoke civil construction and interior turnkey
@@ -72,7 +72,7 @@ export default function AboutPage() {
         <section className="section soft-section">
           <div className="container about-page__blocks">
             <article className="about-page__panel">
-              <p className="eyebrow">Our Vision</p>
+              {/* <p className="eyebrow">Our Vision</p> */}
               <h2>Our Vision</h2>
               <p>
                 To emerge as a distinguished leader in the infrastructure and construction
@@ -82,7 +82,7 @@ export default function AboutPage() {
             </article>
 
             <article className="about-page__panel">
-              <p className="eyebrow">Our Mission</p>
+              {/* <p className="eyebrow">Our Mission</p> */}
               <h2>Our Mission</h2>
               <p>To deliver world-class construction and interior turnkey solutions backed by:</p>
               <ul className="about-page__list">

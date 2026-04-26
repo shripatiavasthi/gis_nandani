@@ -73,7 +73,7 @@ export function PublicSiteHeader() {
           <NavLink to="/about">About Us</NavLink>
           <a href="/#services">Services</a>
           <NavLink to="/projects">Projects</NavLink>
-          <a href="/#contact">Contact</a>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
       </div>
     </header>
