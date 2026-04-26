@@ -120,8 +120,8 @@ figure {
 }
 
 .brand-logo {
-  width: 54px;
-  height: 54px;
+  width: 136px;
+  height: 72px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -223,7 +223,7 @@ figure {
 .projects-hero h1 {
   margin: 24px auto 16px;
   max-width: 760px;
-  font-size: clamp(38px, 5vw, 41px);
+  font-size: clamp(38px, 5vw, 45px);
   line-height: 1.1;
   font-weight: 600;
 }
@@ -1264,8 +1264,8 @@ figure {
   }
 
   .brand-logo {
-    width: 82px;
-    height: 82px;
+    width: 118px;
+    height: 64px;
   }
 
   .split-visual img,
@@ -1339,8 +1339,8 @@ figure {
   }
 
   .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 92px;
+    height: 48px;
   }
 
   .brand-text strong {

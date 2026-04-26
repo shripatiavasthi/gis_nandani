@@ -5,7 +5,7 @@ export const siteContent = {
     name: 'Global Infra Solutions',
     shortName: 'GIS',
     logoText: 'Global Infra Solutions',
-    logoUrl: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1774868633898-gis-logo.png',
+    logoUrl: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1777185414644-global-logo.png',
   },
   contact: {
     phones: ['+91 9873342618'],
