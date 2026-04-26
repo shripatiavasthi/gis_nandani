@@ -51,7 +51,7 @@ export default function AllProjectsPage() {
           </div>
         </section>
 
-        <section className="section">
+        {/* <section className="section">
           <div className="container">
             <div className="project-page__topbar">
               <Link className="project-page__back" to="/">
@@ -71,14 +71,14 @@ export default function AllProjectsPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <section className="section soft-section">
+        <section className="section">
           <div className="container">
-            <div className="section-heading centered">
+            {/* <div className="section-heading centered">
               <h2>Gallery</h2>
               <p>Designs that define spaces.</p>
-            </div>
+            </div> */}
 
             <div className="project-gallery-grid">
               {projects.map((project) => (
@@ -97,7 +97,6 @@ export default function AllProjectsPage() {
                 >
                   <LazyImage src={project.coverImage?.url || project.image} alt={project.name || project.title} />
                   <div className="project-gallery-card__body">
-                    <span>{project.galleryCount ? `${project.galleryCount} photos` : 'Delivered Project'}</span>
                     <h3>{project.name || project.title}</h3>
                     <p>{project.shortDescription}</p>
                   </div>
