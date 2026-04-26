@@ -334,6 +334,7 @@ figure {
 .project-gallery-card__body p,
 .project-page__hero-copy p {
   color: var(--muted);
+  margin-top: 5px;
 }
 
 .section-anchor {
