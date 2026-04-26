@@ -48,10 +48,10 @@ export function PublicSiteHeader() {
             src={siteContent.company.logoUrl}
             alt={`${siteContent.company.name} logo`}
           />
-          <div>
+          {/* <div>
             <strong>{siteContent.company.name}</strong>
             <small>Infrastructure | Interiors | Project Delivery</small>
-          </div>
+          </div> */}
         </NavLink>
 
         <button

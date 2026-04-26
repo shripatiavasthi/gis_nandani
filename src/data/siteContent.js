@@ -27,7 +27,7 @@ export const siteContent = {
     { label: 'Contact', href: '#contact' },
   ],
   hero: {
-    eyebrow: 'Turnkey Infrastructure And Interior Delivery',
+    eyebrow: '',
     title: 'Global Partner for Turnkey Infrastructure & Interior Solutions.',
     subHeadline:
       'From foundational civil engineering to high-end corporate interiors, we deliver precision-led environments for brands that lead the world.',

@@ -118,8 +118,8 @@ export default function HomePage() {
           </video>
           <div className="hero-overlay" />
           <div className="container hero-content">
-            <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p>
-            <p className="eyebrow subtitle">{siteContent.hero.eyebrow}</p>
+            {/* <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p> */}
+            {/* <p className="eyebrow subtitle">{siteContent.hero.eyebrow}</p> */}
             <h1>{siteContent.hero.title}</h1>
             <p className="hero-copy">{siteContent.hero.subHeadline}</p>
             <a className="hero-cta" href={siteContent.hero.primaryCta.href}>

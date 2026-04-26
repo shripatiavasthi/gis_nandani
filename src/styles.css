@@ -223,7 +223,7 @@ figure {
 .projects-hero h1 {
   margin: 24px auto 16px;
   max-width: 760px;
-  font-size: clamp(38px, 5vw, 64px);
+  font-size: clamp(38px, 5vw, 41px);
   line-height: 1.1;
   font-weight: 600;
 }

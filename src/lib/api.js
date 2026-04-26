@@ -3,13 +3,13 @@ const defaultProductionApiUrl = 'https://gis-backend-seven.vercel.app'
 const resolveApiBaseUrl = () => {
   const envApiUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '')
 
-  if (envApiUrl) {
-    return envApiUrl
-  }
+  // if (envApiUrl) {
+  //   return envApiUrl
+  // }
 
-  if (import.meta.env.DEV) {
-    return ''
-  }
+  // if (import.meta.env.DEV) {
+  //   return ''
+  // }
 
   return defaultProductionApiUrl
 }
