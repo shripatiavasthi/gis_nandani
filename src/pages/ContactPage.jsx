@@ -71,12 +71,12 @@ export default function ContactPage() {
               </div>
 
               <article className="contact-page__info-card">
-                <p className="eyebrow">Contact Us</p>
-                <h3>Reach GIS for project conversations that need clarity and execution depth.</h3>
+                {/* <p className="eyebrow">Contact Us</p> */}
+                {/* <h3>Reach GIS for project conversations that need clarity and execution depth.</h3>
                 <p>
                   We design residential and commercial environments that balance comfort, class,
                   performance, and long-term value.
-                </p>
+                </p> */}
 
                 <div className="contact-page__info-list">
                   <div>
@@ -111,8 +111,8 @@ export default function ContactPage() {
             </div>
 
             <article className="contact-page__form-card">
-              <p className="eyebrow">Contact Us</p>
-              <h2>{siteContent.contactForm.title}</h2>
+              {/* <p className="eyebrow">Contact Us</p> */}
+              {/* <h2>{siteContent.contactForm.title}</h2> */}
 
               <form className="contact-page__form" onSubmit={handleSubmit}>
                 {siteContent.contactForm.fields.map((field) => (
