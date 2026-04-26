@@ -51,14 +51,14 @@ export default function AboutPage() {
                 execute with perfection, and deliver beyond expectation.
               </p>
 
-              <div className="intro-stats">
+              {/* <div className="intro-stats">
                 {siteContent.featureStats.map((item) => (
                   <div key={item.label} className="intro-stat">
                     <strong>{item.value}</strong>
                     <span>{item.label}</span>
                   </div>
                 ))}
-              </div>
+              </div> */}
 
               <div>
                 <Link className="hero-cta" to="/projects">
