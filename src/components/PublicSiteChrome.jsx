@@ -93,16 +93,16 @@ export function PublicSiteFooter() {
 
         <div className="footer-contact">
           <span className="footer-label">Contact</span>
-          <p>Headquarters: {siteContent.contact.headquarters}</p>
+          <p>{siteContent.contact.headquarters}</p>
           <p>Direct Inquiry: {siteContent.contact.emails[1]}</p>
           <p>Consultation Line: {siteContent.contactSection.consultationLine}</p>
         </div>
 
         <div className="footer-details">
           <span className="footer-label">Reach GIS</span>
-          <p>
-            <strong>Address:</strong> {siteContent.contact.headquarters}
-          </p>
+          {/* <p> */}
+            {/* {siteContent.contact.headquarters} */}
+          {/* </p> */}
           <p>
             <strong>Email:</strong>{' '}
             <a href={`mailto:${siteContent.contact.emails[0]}`}>{siteContent.contact.emails[0]}</a>
