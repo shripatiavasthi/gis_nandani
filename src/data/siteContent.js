@@ -28,11 +28,11 @@ export const siteContent = {
   ],
   hero: {
     eyebrow: '',
-    title: 'Global Partner for Turnkey Infrastructure & Interior Solutions.',
+    title: 'Global Partner for Turnkey Infrastructure & Interior Solutions',
     subHeadline:
-      'From foundational civil engineering to high-end corporate interiors,',
+      'From foundational civil engineering to high-end corporate interiors',
     subHeadlineNew:
-      'We deliver precision-led environments for brands that lead the world.',
+      'We deliver precision-led environments for brands that lead the world',
     description:
       'Global Infra Solutions brings together civil execution, interior fit-outs, and bespoke furniture systems under one accountable delivery framework.',
     primaryCta: { label: 'Get in touch', href: '#contact' },
