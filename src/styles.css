@@ -387,7 +387,7 @@ figure {
 
 .about-page__panel {
   padding: 32px;
-  background: #fff;
+  background: #1b1b1b;
   border-radius: 24px;
   box-shadow: var(--shadow);
 }
@@ -396,16 +396,17 @@ figure {
   margin: 0 0 14px;
   font-size: clamp(28px, 3.4vw, 38px);
   line-height: 1.1;
+  color: #fff;
 }
 
 .about-page__panel p {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .about-page__list {
   margin: 18px 0 0;
   padding-left: 20px;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.84);
   line-height: 1.8;
 }
 
@@ -495,6 +496,7 @@ figure {
   align-items: center;
   justify-content: center;
   min-height: 58px;
+  border: 0;
   border-radius: 999px;
   background: #f3b90f;
   color: #111;

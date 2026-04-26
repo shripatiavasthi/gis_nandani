@@ -112,8 +112,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="section soft-section">
-          <div className="container">
+        {/* <section className="section soft-section"> */}
+          {/* <div className="container">
             <div className="section-heading centered">
               <h2>What We Deliver</h2>
               <p>{siteContent.solutions.title}</p>
@@ -129,8 +129,8 @@ export default function AboutPage() {
                 </article>
               ))}
             </div>
-          </div>
-        </section>
+          </div> */}
+        {/* </section> */}
       </main>
 
       <PublicSiteFooter />
