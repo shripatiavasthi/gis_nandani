@@ -306,9 +306,9 @@ figure {
 
 .services-section .service-card {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* border: 1px solid rgba(255, 255, 255, 0.14); */
   backdrop-filter: blur(8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22); */
 }
 
 .services-section .service-card-body {

@@ -175,15 +175,18 @@ export const siteContent = {
   projectSeries: [
     {
       title: 'The Heritage Series',
+      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190466854-The%20Heritage%20Series.jpeg',
       description:
         'Institutional projects for government and public infrastructure including Commissionerate of Police and Panchkula E-Library.',
     },
     {
       title: 'The Luxury Series',
+      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190468676-The%20Luxury%20Series.jpeg',
       description: 'High-end retail and brand flagships including Tissot, Citizen, and Seiko.',
     },
     {
       title: 'The Corporate Series',
+      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190469455-corporate.jpeg',
       description: 'Modern workspace optimization and executive suites including Sony Music and CM Conference Facilities.',
     },
   ],

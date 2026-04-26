@@ -87,19 +87,6 @@ export default function HomePage() {
     return siteContent.solutions.items.map((_, index) => imagePool[index % imagePool.length])
   }, [galleryItems])
 
-  const projectSeriesImages = useMemo(
-    () =>
-      siteContent.projectSeries.map((series, index) => {
-        const matchingProject = galleryItems.find((project) => project.series === series.title)
-        return (
-          getProjectImage(matchingProject) ||
-          getProjectImage(galleryItems[index]) ||
-          siteContent.gallery[index % siteContent.gallery.length].image
-        )
-      }),
-    [galleryItems],
-  )
-
   const galleryError =
     status === 'failed' ? 'Project API is not reachable yet. Showing sample cards for now.' : ''
   const emptyStateMessage =
@@ -177,9 +164,9 @@ export default function HomePage() {
               <p>Selected sectors and project categories delivered through one accountable GIS team.</p>
             </div>
             <div className="project-category-grid">
-              {siteContent.projectSeries.map((series, index) => (
+              {siteContent.projectSeries.map((series) => (
                 <article key={series.title} className="project-category-card">
-                  <LazyImage src={projectSeriesImages[index]} alt={series.title} />
+                  <LazyImage src={series.image} alt={series.title} />
                   <div className="project-category-copy">
                     <h3>{series.title}</h3>
                     <p>{series.description}</p>

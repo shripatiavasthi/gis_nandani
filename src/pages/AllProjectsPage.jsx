@@ -60,12 +60,9 @@ export default function AllProjectsPage() {
             </div>
 
             <div className="project-category-grid">
-              {siteContent.projectSeries.map((category, index) => (
+              {siteContent.projectSeries.map((category) => (
                 <article key={category.title} className="project-category-card">
-                  <LazyImage
-                    src={siteContent.gallery[index % siteContent.gallery.length].image}
-                    alt={category.title}
-                  />
+                  <LazyImage src={category.image} alt={category.title} />
                   <div className="project-category-copy">
                     <h3>{category.title}</h3>
                     <p>{category.description}</p>
