@@ -142,7 +142,7 @@ export default function ContactPage() {
                 <button className="contact-page__submit" type="submit">
                   Submit Your Inquiry
                 </button>
-                <p className="contact-page__footnote">{siteContent.contactForm.footnote}</p>
+                {/* <p className="contact-page__footnote">{siteContent.contactForm.footnote}</p> */}
               </form>
             </article>
           </div>
