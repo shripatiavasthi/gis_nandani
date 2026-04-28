@@ -40,7 +40,7 @@ export default function ContactPage() {
       ].join('\n'),
     )
 
-    window.location.href = `mailto:${siteContent.contact.emails[0]}?subject=${subject}&body=${body}`
+    window.location.href = `mailto:${siteContent.contact.emails.join(',')}?subject=${subject}&body=${body}`
   }
 
   return (
@@ -91,20 +91,20 @@ export default function ContactPage() {
 
                   <div>
                     <span>Email</span>
-                    <p>
-                      <a href={`mailto:${siteContent.contact.emails[0]}`}>
-                        {siteContent.contact.emails[0]}
-                      </a>
-                    </p>
+                    {siteContent.contact.emails.map((email) => (
+                      <p key={email}>
+                        <a href={`mailto:${email}`}>{email}</a>
+                      </p>
+                    ))}
                   </div>
 
                   <div>
                     <span>Phone</span>
-                    <p>
-                      <a href={`tel:${siteContent.contact.phones[0].replace(/\s+/g, '')}`}>
-                        {siteContent.contact.phones[0]}
-                      </a>
-                    </p>
+                    {siteContent.contact.phones.map((phone) => (
+                      <p key={phone}>
+                        <a href={`tel:${phone.replace(/\s+/g, '')}`}>{phone}</a>
+                      </p>
+                    ))}
                   </div>
                 </div>
               </article>

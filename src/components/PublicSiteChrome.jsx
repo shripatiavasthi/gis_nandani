@@ -85,14 +85,20 @@ export function PublicSiteHeader() {
           <span className="site-nav-divider" aria-hidden="true">
             |
           </span>
-          <a
-            className="site-nav-phone"
-            href={`tel:${siteContent.contact.phones[0].replace(/\s+/g, '')}`}
-            aria-label={`Call ${siteContent.contact.phones[0]}`}
-          >
-            <PhoneIcon />
-            <span>{siteContent.contact.phones[0]}</span>
-          </a>
+          {siteContent.contact.phones.map((phone, index) => (
+            <span key={phone} className="site-nav-phone">
+              {index > 0 ? (
+                <span className="site-nav-divider" aria-hidden="true">
+                  |
+                </span>
+              ) : (
+                <PhoneIcon />
+              )}
+              <a href={`tel:${phone.replace(/\s+/g, '')}`} aria-label={`Call ${phone}`}>
+                <span>{phone}</span>
+              </a>
+            </span>
+          ))}
         </nav>
       </div>
     </header>
@@ -113,8 +119,10 @@ export function PublicSiteFooter() {
         <div className="footer-contact">
           <span className="footer-label">Contact</span>
           <p>{siteContent.contact.headquarters}</p>
-          <p>{siteContent.contact.emails[0]}</p>
-          <p>Phone No.: {siteContent.contactSection.consultationLine}</p>
+          {siteContent.contact.emails.map((email) => (
+            <p key={email}>{email}</p>
+          ))}
+          <span className="footer-contact-phone">Phone No.: {siteContent.contact.phones.join(', ')}</span>
         </div>
 
         <div className="footer-details">

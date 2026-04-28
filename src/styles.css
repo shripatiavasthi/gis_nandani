@@ -1076,6 +1076,12 @@ figure {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.footer-contact-phone {
+  display: block;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .footer-details {
   display: grid;
   gap: 16px;

@@ -5,11 +5,11 @@ export const siteContent = {
     name: 'Global Infra Solutions',
     shortName: 'GIS',
     logoText: 'Global Infra Solutions',
-    logoUrl: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/branding/1777185414644-global-logo.png',
+    logoUrl: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/1777185414644-global-logo.png',
   },
   contact: {
-    phones: ['+91 9873342618'],
-    emails: ['solutions@globalinfraa.com'],
+    phones: ['+91 9873342618', '+91 88607 45145'],
+    emails: ['gis@globalinfraa.com', 'support@globalinfraa.com'],
     headquarters:
       'Tower T03-521, 5th floor, RPS Infinia, 12th Avenue, 12/6 Milestone, Mathura Road, Sarai Khawaja, Faridabad 121013',
   },
@@ -175,19 +175,19 @@ export const siteContent = {
   projectSeries: [
     {
       title: 'The Heritage Series',
-      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190466854-The%20Heritage%20Series.jpeg',
+      image: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/project-series/1777190466854-The%20Heritage%20Series.jpeg',
       description:
         'Delivering public and institutional infrastructure with a focus on longevity and reliability. Built to support communities with strong, purpose-driven design.',
     },
     {
       title: 'The Luxury Series',
-      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190468676-The%20Luxury%20Series.jpeg',
+      image: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/project-series/1777190468676-The%20Luxury%20Series.jpeg',
       description:
         'Creating premium environments that reflect sophistication and brand identity. Designed with attention to detail, elegance, and superior craftsmanship.',
     },
     {
       title: 'The Corporate Series',
-      image: 'https://funflick-toys.s3.eu-north-1.amazonaws.com/project-series/1777190469455-corporate.jpeg',
+      image: 'https://globalinfraa.s3.eu-north-1.amazonaws.com/project-series/1777190469455-corporate.jpeg',
       description:
         'Building efficient and modern workspaces tailored for business performance. Spaces that enhance productivity while maintaining a professional, refined aesthetic.',
     },
@@ -226,8 +226,8 @@ export const siteContent = {
     eyebrow: 'Contact Us | Connect with Experts',
     title: 'Speak with Our Project Experts',
     lead: 'Our team is ready to guide you through every stage of your infrastructure and interior project.',
-    consultationLine: '+91 9873342618',
-    cta: { label: 'Start Your Project', href: 'mailto:solutions@globalinfraa.com' },
+    consultationLine: '+91 9873342618 | +91 88607 45145',
+    cta: { label: 'Start Your Project', href: 'mailto:gis@globalinfraa.com' },
   },
   contactForm: {
     title: 'Request a Project Consultation',
