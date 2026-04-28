@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux'
 const heroVideo =
   'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/videos/1777399560030-bannerVideo.mp4'
 const heroPoster =
-  'https://images.pexels.com/videos/7646443/adult-banking-blur-book-series-7646443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200'
+  'https://globalinfraa.s3.eu-north-1.amazonaws.com/branding/posters/1777399956493-hero-banner-poster.png'
 
 const normalizeSeries = (project) => {
   const source = `${project.shortDescription || ''} ${project.name || ''}`.toLowerCase()
