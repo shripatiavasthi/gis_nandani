@@ -96,7 +96,7 @@ export default function ContactPage() {
                       <strong>Factory:</strong> {siteContent.contact.factoryAddress}
                     </p>
                     <p>
-                      <strong>Office Map</strong>
+                      <strong>Office Location</strong>
                     </p>
                     <div className="contact-page__map">
                       <iframe
@@ -113,7 +113,7 @@ export default function ContactPage() {
                       </a>
                     </p>
                     <p>
-                      <strong>Factory Map</strong>
+                      <strong>Factory Location</strong>
                     </p>
                     <div className="contact-page__map">
                       <iframe
