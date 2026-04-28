@@ -8,6 +8,14 @@ import {
 import { LazyImage } from '../components/LazyImage'
 import { siteContent } from '../data/siteContent'
 
+const factoryMapUrl = 'https://google.com/maps?q=28.387134552001953,77.26447296142578&z=17&hl=en'
+const factoryMapEmbedUrl =
+  'https://maps.google.com/maps?q=28.387134552001953,77.26447296142578&z=17&hl=en&output=embed'
+const officeMapUrl =
+  'https://www.google.com/maps/dir//RPS+12th+Avenue,+12%2F6+Milestone,+Main,+Mathura+Rd,+Faridabad,+Haryana+121003/@28.4151045,77.320955,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390ce73f690e51d3:0xaab05dc5cac0072a!2m2!1d77.3054758!2d28.4720663?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D'
+const officeMapEmbedUrl =
+  'https://maps.google.com/maps?q=28.4720663,77.3054758&z=17&hl=en&output=embed'
+
 const initialFormState = {
   fullName: '',
   phone: '',
@@ -81,7 +89,46 @@ export default function ContactPage() {
                 <div className="contact-page__info-list">
                   <div>
                     <span>Location</span>
-                    <p>{siteContent.contact.headquarters}</p>
+                    <p>
+                      <strong>Office:</strong> {siteContent.contact.officeAddress}
+                    </p>
+                    <p>
+                      <strong>Factory:</strong> {siteContent.contact.factoryAddress}
+                    </p>
+                    <p>
+                      <strong>Office Map</strong>
+                    </p>
+                    <div className="contact-page__map">
+                      <iframe
+                        title="GIS office location map"
+                        src={officeMapEmbedUrl}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
+                    <p>
+                      <a href={officeMapUrl} target="_blank" rel="noreferrer">
+                        Open Office Map
+                      </a>
+                    </p>
+                    <p>
+                      <strong>Factory Map</strong>
+                    </p>
+                    <div className="contact-page__map">
+                      <iframe
+                        title="GIS factory location map"
+                        src={factoryMapEmbedUrl}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        allowFullScreen
+                      />
+                    </div>
+                    <p>
+                      <a href={factoryMapUrl} target="_blank" rel="noreferrer">
+                        Open Factory Map
+                      </a>
+                    </p>
                   </div>
 
                   <div>

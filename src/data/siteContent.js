@@ -10,8 +10,10 @@ export const siteContent = {
   contact: {
     phones: ['+91 9873342618', '+91 88607 45145'],
     emails: ['gis@globalinfraa.com', 'support@globalinfraa.com'],
-    headquarters:
+    officeAddress:
       'Tower T03-521, 5th floor, RPS Infinia, 12th Avenue, 12/6 Milestone, Mathura Road, Sarai Khawaja, Faridabad 121013',
+    factoryAddress:
+      'Plot No. 1879 Dabua Pali Road Near Shri ram Dharam Kanta Sector - 49, Faridabad Haryana',
   },
   socialLinks: [
     { label: 'Facebook', href: 'https://www.facebook.com/share/17sgvvLmz2/?mibextid=wwXIfr' },

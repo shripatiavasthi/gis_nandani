@@ -118,7 +118,12 @@ export function PublicSiteFooter() {
 
         <div className="footer-contact">
           <span className="footer-label">Contact</span>
-          <p>{siteContent.contact.headquarters}</p>
+          <p>
+            <strong>Office:</strong> {siteContent.contact.officeAddress}
+          </p>
+          <p>
+            <strong>Factory:</strong> {siteContent.contact.factoryAddress}
+          </p>
           {siteContent.contact.emails.map((email) => (
             <p key={email}>{email}</p>
           ))}
