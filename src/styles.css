@@ -544,6 +544,25 @@ figure {
   transform: translateY(-2px);
 }
 
+.contact-page__submit:disabled {
+  cursor: wait;
+  opacity: 0.8;
+  transform: none;
+}
+
+.contact-page__form-status {
+  margin: 0;
+  font-size: 14px;
+}
+
+.contact-page__form-status--success {
+  color: #1f7a34;
+}
+
+.contact-page__form-status--error {
+  color: #b42318;
+}
+
 .contact-page__footnote {
   margin: 0;
   color: var(--muted);
@@ -1377,6 +1396,10 @@ figure {
   grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
 }
 
+.crm-panel-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .crm-panel {
   padding: 1.4rem;
 }
@@ -1439,6 +1462,147 @@ figure {
 .crm-button--danger {
   background: #d53f3f;
   color: #fff;
+}
+
+.crm-button--small {
+  min-height: 2.4rem;
+  padding: 0 0.9rem;
+}
+
+.crm-data-grid {
+  flex: 1;
+  min-height: 0;
+  margin-top: 1rem;
+}
+
+.crm-data-grid .MuiDataGrid-root {
+  border: 1px solid rgba(13, 20, 26, 0.12);
+  border-radius: 1rem;
+  background: #fff;
+}
+
+.crm-status-badge {
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.crm-status-badge--new {
+  height: 26px;
+  background-color: rgba(36, 99, 235, 0.1);
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(36, 99, 235, 0.16) 0,
+      rgba(36, 99, 235, 0.16) 6px,
+      rgba(255, 255, 255, 0) 6px,
+      rgba(255, 255, 255, 0) 12px
+    );
+  color: #1d4ed8;
+}
+
+.crm-status-badge--pending {
+  height: 26px;
+  background: rgba(234, 179, 8, 0.16);
+  color: #a16207;
+}
+
+.crm-status-badge--completed {
+  height: 26px;
+  background: rgba(34, 197, 94, 0.14);
+  color: #15803d;
+}
+
+.crm-status-badge--rejected {
+  height: 26px;
+  background: rgba(239, 68, 68, 0.14);
+  color: #b91c1c;
+}
+
+.crm-status-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.crm-lead-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.crm-status-select {
+  min-height: 2.4rem;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(13, 20, 26, 0.14);
+  border-radius: 0.8rem;
+  background: #fff;
+  color: var(--ink);
+}
+
+.crm-icon-button--edit {
+  background: rgba(36, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+
+.crm-icon-button--delete {
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+}
+
+.crm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 20, 26, 0.52);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  z-index: 50;
+}
+
+.crm-modal {
+  width: min(100%, 520px);
+  border: 1px solid var(--line);
+  border-radius: 1.6rem;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow);
+  padding: 1.4rem;
+}
+
+.crm-modal__body {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.crm-modal__body p {
+  margin: 0;
+}
+
+.crm-modal__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.crm-modal__field span {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.crm-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
 }
 
 .crm-alert {

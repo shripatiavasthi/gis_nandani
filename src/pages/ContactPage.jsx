@@ -7,6 +7,7 @@ import {
 } from '../components/PublicSiteChrome'
 import { LazyImage } from '../components/LazyImage'
 import { siteContent } from '../data/siteContent'
+import { request } from '../lib/api'
 
 const factoryMapUrl = 'https://google.com/maps?q=28.387134552001953,77.26447296142578&z=17&hl=en'
 const factoryMapEmbedUrl =
@@ -26,29 +27,46 @@ const initialFormState = {
 
 export default function ContactPage() {
   const [formValues, setFormValues] = useState(initialFormState)
+  const [submitState, setSubmitState] = useState({
+    status: 'idle',
+    message: '',
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormValues((current) => ({ ...current, [name]: value }))
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    setSubmitState({
+      status: 'loading',
+      message: '',
+    })
 
-    const subject = encodeURIComponent(`Project Inquiry from ${formValues.fullName || 'Website Visitor'}`)
-    const body = encodeURIComponent(
-      [
-        `Name: ${formValues.fullName}`,
-        `Phone: ${formValues.phone}`,
-        `Email: ${formValues.email}`,
-        `Project Location: ${formValues.location}`,
-        '',
-        'Message:',
-        formValues.message,
-      ].join('\n'),
-    )
+    try {
+      await request('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formValues,
+          source: 'contact-page',
+        }),
+      })
 
-    window.location.href = `mailto:${siteContent.contact.emails.join(',')}?subject=${subject}&body=${body}`
+      setFormValues(initialFormState)
+      setSubmitState({
+        status: 'success',
+        message: 'Your inquiry has been submitted successfully.',
+      })
+    } catch (error) {
+      setSubmitState({
+        status: 'error',
+        message: error.message || 'Failed to submit your inquiry.',
+      })
+    }
   }
 
   return (
@@ -133,7 +151,7 @@ export default function ContactPage() {
 
                   <div>
                     <span>Hours</span>
-                    <p>Mon-Fri 9am to 7pm</p>
+                    <p>10-7 Monday to Saturday</p>
                   </div>
 
                   <div>
@@ -186,9 +204,20 @@ export default function ContactPage() {
                   />
                 </label>
 
-                <button className="contact-page__submit" type="submit">
-                  Submit Your Inquiry
+                <button
+                  className="contact-page__submit"
+                  type="submit"
+                  disabled={submitState.status === 'loading'}
+                >
+                  {submitState.status === 'loading' ? 'Submitting...' : 'Submit Your Inquiry'}
                 </button>
+                {submitState.message ? (
+                  <p
+                    className={`contact-page__form-status contact-page__form-status--${submitState.status}`}
+                  >
+                    {submitState.message}
+                  </p>
+                ) : null}
                 {/* <p className="contact-page__footnote">{siteContent.contactForm.footnote}</p> */}
               </form>
             </article>

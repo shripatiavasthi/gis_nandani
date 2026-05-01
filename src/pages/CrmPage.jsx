@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
+import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 
 import { LazyImage } from '../components/LazyImage'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fileToBase64 } from '../lib/files'
+import { request } from '../lib/api'
 import { clearAuthError, loginAdmin, logoutAdmin } from '../features/auth/authSlice'
 import {
   addProjectGalleryImages,
@@ -15,6 +17,8 @@ import {
   updateProjectGalleryImageCaption,
   updateProject,
 } from '../features/projects/projectsSlice'
+
+const leadStatusOptions = ['new', 'pending', 'completed', 'rejected']
 
 export default function CrmPage() {
   const dispatch = useAppDispatch()
@@ -39,13 +43,131 @@ export default function CrmPage() {
   const [galleryFiles, setGalleryFiles] = useState([])
   const [editingCaptionKey, setEditingCaptionKey] = useState('')
   const [captionDraft, setCaptionDraft] = useState('')
+  const [leads, setLeads] = useState([])
+  const [leadsStatus, setLeadsStatus] = useState('idle')
+  const [leadsError, setLeadsError] = useState('')
+  const [leadStatusDrafts, setLeadStatusDrafts] = useState({})
+  const [updatingLeadId, setUpdatingLeadId] = useState('')
+  const [leadModal, setLeadModal] = useState(null)
 
   const isBusy = authStatus === 'loading' || mutationStatus === 'loading'
   const errorMessage = useMemo(() => authError || projectError, [authError, projectError])
+  const leadRows = useMemo(
+    () =>
+      leads.map((lead) => ({
+        id: lead._id,
+        ...lead,
+      })),
+    [leads],
+  )
+
+  const leadColumns = useMemo(
+    () => [
+      { field: 'fullName', headerName: 'Name', flex: 1.05, minWidth: 180 },
+      { field: 'phone', headerName: 'Phone', flex: 0.9, minWidth: 150 },
+      { field: 'email', headerName: 'Email', flex: 1.15, minWidth: 220 },
+      { field: 'location', headerName: 'Location', flex: 0.95, minWidth: 160 },
+      { field: 'message', headerName: 'Message', flex: 1.4, minWidth: 260 },
+      {
+        field: 'status',
+        headerName: 'Status',
+        flex: 0.8,
+        minWidth: 140,
+        renderCell: (params) => (
+          <span className={`crm-status-badge crm-status-badge--${params.value}`}>{params.value}</span>
+        ),
+      },
+      {
+        field: 'actions',
+        headerName: 'Action',
+        sortable: false,
+        filterable: false,
+        minWidth: 130,
+        flex: 0.7,
+        renderCell: (params) => (
+          <div className="crm-lead-actions">
+            <button
+              className="crm-icon-button crm-icon-button--edit"
+              type="button"
+              aria-label="Edit lead status"
+              title="Edit lead status"
+              onClick={() => handleOpenLeadModal(params.row)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M4 20h4l10-10-4-4L4 16v4zm12.7-13.3 1.6-1.6a1 1 0 0 1 1.4 0l1.2 1.2a1 1 0 0 1 0 1.4L19.3 9l-2.6-2.3z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <button
+              className="crm-icon-button crm-icon-button--delete"
+              type="button"
+              aria-label="Delete lead"
+              title="Delete lead"
+              onClick={() => handleDeleteLead(params.row.id)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M9 3h6l1 2h4v2H4V5h4l1-2Zm1 7h2v8h-2v-8Zm4 0h2v8h-2v-8ZM7 10h2v8H7v-8Zm-1 10h12l1-12H5l1 12Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
+        ),
+      },
+      {
+        field: 'createdAt',
+        headerName: 'Created',
+        flex: 0.9,
+        minWidth: 180,
+        valueFormatter: (value) => {
+          if (!value) {
+            return ''
+          }
+
+          return new Date(value).toLocaleString('en-IN', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          })
+        },
+      },
+    ],
+    [],
+  )
 
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
+
+  useEffect(() => {
+    if (!token) {
+      return
+    }
+
+    const fetchLeads = async () => {
+      setLeadsStatus('loading')
+      setLeadsError('')
+
+      try {
+        const payload = await request('/api/leads')
+        setLeads(payload.data || [])
+        setLeadStatusDrafts(
+          Object.fromEntries((payload.data || []).map((lead) => [lead._id, lead.status || 'new'])),
+        )
+        setLeadsStatus('succeeded')
+      } catch (error) {
+        setLeadsStatus('failed')
+        setLeadsError(error.message || 'Failed to fetch leads')
+      }
+    }
+
+    fetchLeads()
+  }, [token])
 
   useEffect(() => {
     if (!selectedSlug && projects.length) {
@@ -209,6 +331,79 @@ export default function CrmPage() {
     }
   }
 
+  const handleLeadStatusUpdate = async (leadId, status) => {
+    setStatusMessage('')
+    setLeadsError('')
+    setUpdatingLeadId(leadId)
+
+    try {
+      const payload = await request(`/api/leads/${leadId}/status`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status }),
+      })
+
+      setLeads((current) =>
+        current.map((lead) => (lead._id === leadId ? payload.data : lead)),
+      )
+      setLeadStatusDrafts((current) => ({
+        ...current,
+        [leadId]: payload.data.status,
+      }))
+      setStatusMessage('Lead status updated successfully.')
+    } catch (error) {
+      setLeadsError(error.message || 'Failed to update lead status')
+    } finally {
+      setUpdatingLeadId('')
+    }
+  }
+
+  const handleOpenLeadModal = (lead) => {
+    setLeadStatusDrafts((current) => ({
+      ...current,
+      [lead.id]: lead.status,
+    }))
+    setLeadModal(lead)
+  }
+
+  const handleCloseLeadModal = () => {
+    if (updatingLeadId) {
+      return
+    }
+
+    setLeadModal(null)
+  }
+
+  const handleDeleteLead = async (leadId) => {
+    if (!window.confirm('Hide this lead from the CRM list?')) {
+      return
+    }
+
+    setStatusMessage('')
+    setLeadsError('')
+    setUpdatingLeadId(leadId)
+
+    try {
+      await request(`/api/leads/${leadId}`, {
+        method: 'DELETE',
+      })
+
+      setLeads((current) => current.filter((lead) => lead._id !== leadId))
+      setLeadStatusDrafts((current) => {
+        const next = { ...current }
+        delete next[leadId]
+        return next
+      })
+      setStatusMessage('Lead hidden successfully.')
+    } catch (error) {
+      setLeadsError(error.message || 'Failed to hide lead')
+    } finally {
+      setUpdatingLeadId('')
+    }
+  }
+
   const getGalleryCaptionValue = (image) => {
     if (image.caption) {
       return image.caption
@@ -314,6 +509,13 @@ export default function CrmPage() {
             type="button"
           >
             Gallery Manager
+          </button>
+          <button
+            className={`crm-nav-button ${activePanel === 'leads' ? 'crm-nav-button--active' : ''}`}
+            onClick={() => setActivePanel('leads')}
+            type="button"
+          >
+            Leads
           </button>
         </div>
         <button className="crm-button crm-button--secondary" onClick={handleLogout} type="button">
@@ -445,7 +647,7 @@ export default function CrmPage() {
               </div>
             </div>
           </section>
-        ) : (
+        ) : activePanel === 'gallery' ? (
           <section className="crm-panel-grid crm-panel-grid--gallery">
             <div className="crm-panel crm-panel--scroll-layout">
               <div className="crm-panel__header">
@@ -562,8 +764,127 @@ export default function CrmPage() {
               )}
             </div>
           </section>
+        ) : (
+          <section className="crm-panel-grid crm-panel-grid--single">
+            <div className="crm-panel crm-panel--scroll-layout">
+              <div className="crm-panel__header">
+                <div>
+                  <p className="crm-section__eyebrow">Lead Inbox</p>
+                  <h2>Submitted Leads</h2>
+                </div>
+                <span>{leadRows.length} total</span>
+              </div>
+
+              {leadsError ? <p className="crm-alert crm-alert--error">{leadsError}</p> : null}
+
+              <div className="crm-data-grid">
+                <DataGrid
+                  rows={leadRows}
+                  columns={leadColumns}
+                  loading={leadsStatus === 'loading'}
+                  disableRowSelectionOnClick
+                  pageSizeOptions={[10, 25, 50]}
+                  initialState={{
+                    pagination: {
+                      paginationModel: {
+                        pageSize: 10,
+                        page: 0,
+                      },
+                    },
+                    sorting: {
+                      sortModel: [{ field: 'createdAt', sort: 'desc' }],
+                    },
+                  }}
+                />
+              </div>
+            </div>
+          </section>
         )}
       </main>
+
+      {leadModal ? (
+        <div className="crm-modal-backdrop" onClick={handleCloseLeadModal} role="presentation">
+          <div
+            className="crm-modal"
+            onClick={(event) => event.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lead-modal-title"
+          >
+            <div className="crm-panel__header">
+              <div>
+                <p className="crm-section__eyebrow">Lead Action</p>
+                <h2 id="lead-modal-title">Update Lead Status</h2>
+              </div>
+              <button
+                className="crm-button crm-button--ghost crm-button--small"
+                type="button"
+                onClick={handleCloseLeadModal}
+                disabled={updatingLeadId === leadModal.id}
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="crm-modal__body">
+              <p><strong>Name:</strong> {leadModal.fullName}</p>
+              <p><strong>Email:</strong> {leadModal.email}</p>
+              <p><strong>Phone:</strong> {leadModal.phone}</p>
+              <label className="crm-modal__field">
+                <span>Status</span>
+                <select
+                  className="crm-status-select"
+                  value={leadStatusDrafts[leadModal.id] || leadModal.status}
+                  onChange={(event) =>
+                    setLeadStatusDrafts((current) => ({
+                      ...current,
+                      [leadModal.id]: event.target.value,
+                    }))
+                  }
+                  disabled={updatingLeadId === leadModal.id}
+                >
+                  {leadStatusOptions.map((status) => (
+                    <option key={status} value={status}>
+                      {status}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="crm-modal__actions">
+              <button
+                className="crm-button crm-button--ghost"
+                type="button"
+                onClick={handleCloseLeadModal}
+                disabled={updatingLeadId === leadModal.id}
+              >
+                Cancel
+              </button>
+              <button
+                className="crm-button crm-button--primary"
+                type="button"
+                disabled={
+                  updatingLeadId === leadModal.id ||
+                  (leadStatusDrafts[leadModal.id] || leadModal.status) === leadModal.status
+                }
+                onClick={async () => {
+                  const nextStatus = leadStatusDrafts[leadModal.id] || leadModal.status
+                  await handleLeadStatusUpdate(leadModal.id, nextStatus)
+                  setLeadModal((current) =>
+                    current ? { ...current, status: nextStatus } : current,
+                  )
+                  if (nextStatus !== leadModal.status) {
+                    setLeadModal(null)
+                  }
+                }}
+              >
+                {updatingLeadId === leadModal.id ? 'Saving...' : 'Save'}
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }
