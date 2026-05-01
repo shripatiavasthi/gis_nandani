@@ -1,3 +1,4 @@
+import { animated, useScroll } from '@react-spring/web'
 import { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -47,6 +48,7 @@ export default function HomePage() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { items, status, error } = useAppSelector((state) => state.projects)
+  const { scrollY } = useScroll()
 
   const fallbackProjects = useMemo(
     () =>
@@ -64,6 +66,10 @@ export default function HomePage() {
   useEffect(() => {
     dispatch(fetchProjects())
   }, [dispatch])
+
+  const heroVideoStyle = {
+    transform: scrollY.to((value) => `translateY(${Math.min(value * 0.18, 140)}px) scale(1.08)`),
+  }
 
   const handleSelectProject = (project) => {
     navigate(`/projects/${project.slug}`, {
@@ -100,9 +106,9 @@ export default function HomePage() {
 
       <main>
         <section className="hero-section">
-          <video autoPlay muted loop playsInline poster={heroPoster}>
+          <animated.video autoPlay muted loop playsInline poster={heroPoster} style={heroVideoStyle}>
             <source src={heroVideo} type="video/mp4" />
-          </video>
+          </animated.video>
           <div className="hero-overlay" />
           <div className="container hero-content">
             {/* <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p> */}

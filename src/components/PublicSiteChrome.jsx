@@ -77,11 +77,11 @@ export function PublicSiteHeader() {
           className={`site-nav${isMenuOpen ? ' site-nav--open' : ''}`}
           aria-label="Primary navigation"
         >
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About Us</NavLink>
-          <a href="/#services">Services</a>
-          <NavLink to="/projects">Projects</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/" data-label="Home">Home</NavLink>
+          <NavLink to="/about" data-label="About Us">About Us</NavLink>
+          <a href="/#services" data-label="Services">Services</a>
+          <NavLink to="/projects" data-label="Projects">Projects</NavLink>
+          <NavLink to="/contact" data-label="Contact">Contact</NavLink>
           <span className="site-nav-divider" aria-hidden="true">
             |
           </span>

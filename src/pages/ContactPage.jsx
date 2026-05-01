@@ -16,6 +16,8 @@ const officeMapUrl =
   'https://www.google.com/maps/dir//RPS+12th+Avenue,+12%2F6+Milestone,+Main,+Mathura+Rd,+Faridabad,+Haryana+121003/@28.4151045,77.320955,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390ce73f690e51d3:0xaab05dc5cac0072a!2m2!1d77.3054758!2d28.4720663?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D'
 const officeMapEmbedUrl =
   'https://maps.google.com/maps?q=28.4720663,77.3054758&z=17&hl=en&output=embed'
+const phonePattern = '^\\+?[0-9 ]{10,15}$'
+const emailPattern = '^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$'
 
 const initialFormState = {
   fullName: '',
@@ -35,6 +37,26 @@ export default function ContactPage() {
   const handleChange = (event) => {
     const { name, value } = event.target
     setFormValues((current) => ({ ...current, [name]: value }))
+  }
+
+  const getFieldValidationProps = (field) => {
+    if (field.name === 'phone') {
+      return {
+        inputMode: 'tel',
+        pattern: phonePattern,
+        title: 'Enter a valid phone number with 10 to 15 digits. Spaces and a leading + are allowed.',
+      }
+    }
+
+    if (field.name === 'email') {
+      return {
+        inputMode: 'email',
+        pattern: emailPattern,
+        title: 'Enter a valid email address, for example name@example.com.',
+      }
+    }
+
+    return {}
   }
 
   const handleSubmit = async (event) => {
@@ -189,6 +211,7 @@ export default function ContactPage() {
                       type={field.type}
                       value={formValues[field.name]}
                       onChange={handleChange}
+                      {...getFieldValidationProps(field)}
                     />
                   </label>
                 ))}

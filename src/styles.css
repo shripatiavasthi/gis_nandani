@@ -160,8 +160,21 @@ figure {
 }
 
 .site-nav a {
+  position: relative;
+  display: inline-block;
   color: var(--ink);
-  transition: font-weight 120ms ease;
+  transition:
+    color 120ms ease,
+    font-weight 120ms ease;
+}
+
+.site-nav a::after {
+  content: attr(data-label);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 700;
 }
 
 .site-nav a.active {
@@ -170,6 +183,7 @@ figure {
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
+  color: #050505;
   font-weight: 700;
 }
 
@@ -217,6 +231,8 @@ figure {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translateY(0) scale(1.08);
+  will-change: transform;
 }
 
 .hero-overlay {
