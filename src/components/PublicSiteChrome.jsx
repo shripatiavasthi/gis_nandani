@@ -47,6 +47,22 @@ export function PublicSiteHeader() {
     setIsMenuOpen(false)
   }, [location.pathname, location.hash])
 
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined
+    }
+
+    const handleScroll = () => {
+      setIsMenuOpen(false)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isMenuOpen])
+
   return (
     <header className="site-header">
       <div className="container header-inner">

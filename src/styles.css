@@ -1901,12 +1901,28 @@ figure {
     width: 100%;
     padding: 12px 14px;
     border-radius: 14px;
-    background: antiquewhite;
+    background: #f7f2e7;
+    border: 1px solid rgba(212, 169, 76, 0.2);
   }
 
   .site-nav-divider,
   .site-nav-phone svg {
     display: none;
+  }
+
+  .site-nav a.active {
+    background: #f3b90f;
+    border-color: #f3b90f;
+    color: #111;
+    font-weight: 700;
+  }
+
+  .site-nav a:not(.active):hover,
+  .site-nav a:not(.active):focus-visible,
+  .site-nav-phone:hover,
+  .site-nav-phone:focus-within {
+    background: #f2eadb;
+    border-color: rgba(212, 169, 76, 0.34);
   }
 
   .intro-stat {
