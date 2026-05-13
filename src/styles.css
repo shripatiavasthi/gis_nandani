@@ -1901,7 +1901,7 @@ figure {
     width: 100%;
     padding: 12px 14px;
     border-radius: 14px;
-    background: var(--soft);
+    background: antiquewhite;
   }
 
   .site-nav-divider,
@@ -1965,6 +1965,11 @@ figure {
 
   .about-page__panel {
     padding: 24px;
+  }
+
+  .about-page__copy > div:last-child {
+    display: flex;
+    justify-content: center;
   }
 
   .contact-page__grid {
