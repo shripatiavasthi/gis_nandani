@@ -42,7 +42,7 @@ export default function AllProjectsPage() {
         <section className="projects-hero">
           <div className="container">
             {/* <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p> */}
-            <h1>Our Projects</h1>
+            <h1>Interior &amp; Construction Projects Across India</h1>
             <p className="hero-copy narrow">
               {status === 'loading'
                 ? 'Loading projects...'

@@ -17,7 +17,7 @@ export default function AboutPage() {
         <section className="projects-hero">
           <div className="container">
             {/* <p className="eyebrow">GLOBAL INFRA SOLUTIONS</p> */}
-            <h1>About Us</h1>
+            <h1>About Global Infra Solutions</h1>
             <p className="hero-copy narrow">
               Learn how GIS combines civil execution, interior delivery, and accountable project
               management into one operating model.

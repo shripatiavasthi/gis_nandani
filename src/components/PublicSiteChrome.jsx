@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
+import { services } from '../data/services'
 import { siteContent } from '../data/siteContent'
 
 function SocialIcon({ label }) {
@@ -147,7 +148,10 @@ export function PublicSiteFooter() {
         </div>
 
         <div className="footer-details">
-          <span className="footer-label">Reach GIS</span>
+          <span className="footer-label">Services</span>
+          <ul>{services.map((service) => (
+            <li key={service.path}><NavLink to={service.path}>{service.label}</NavLink></li>
+          ))}</ul>
           {/* <p> */}
             {/* {siteContent.contact.headquarters} */}
           {/* </p> */}

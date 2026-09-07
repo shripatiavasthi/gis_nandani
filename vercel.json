@@ -1,6 +1,42 @@
 {
   "rewrites": [
     {
+      "source": "/about",
+      "destination": "/about/index.html"
+    },
+    {
+      "source": "/turnkey-projects",
+      "destination": "/turnkey-projects/index.html"
+    },
+    {
+      "source": "/interior-design",
+      "destination": "/interior-design/index.html"
+    },
+    {
+      "source": "/commercial-interiors",
+      "destination": "/commercial-interiors/index.html"
+    },
+    {
+      "source": "/residential",
+      "destination": "/residential/index.html"
+    },
+    {
+      "source": "/civil-construction",
+      "destination": "/civil-construction/index.html"
+    },
+    {
+      "source": "/projects",
+      "destination": "/projects/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/crm",
+      "destination": "/crm/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

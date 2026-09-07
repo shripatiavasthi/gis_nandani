@@ -1,6 +1,6 @@
 import { animated, useScroll } from '@react-spring/web'
 import { useEffect, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import {
   PublicSiteFooter,
@@ -154,7 +154,7 @@ export default function HomePage() {
                 <article key={solution.id} className="service-card">
                   <LazyImage src={solutionImages[index]} alt={solution.title} />
                   <div className="service-card-body">
-                    <h4>{solution.title}</h4>
+                    <h3><Link to={['/civil-construction', '/interior-design', '/commercial-interiors'][index]}>{solution.title}</Link></h3>
                     <p>{solution.description}</p>
                   </div>
                 </article>

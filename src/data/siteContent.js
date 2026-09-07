@@ -30,9 +30,9 @@ export const siteContent = {
   ],
   hero: {
     eyebrow: '',
-    title: 'Global Partner for Turnkey Infrastructure & Interior Solutions',
+    title: 'Turnkey Interior Solutions in India',
     subHeadline:
-      'From foundational civil engineering to high-end corporate interiors',
+      'Global Infra Solutions delivers civil construction, commercial interiors and turnkey project execution across India.',
     subHeadlineNew:
       'We deliver precision-led environments for brands that lead the world',
     description:

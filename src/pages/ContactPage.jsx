@@ -99,7 +99,7 @@ export default function ContactPage() {
         <section className="projects-hero contact-page__hero">
           <div className="container">
             {/* <p className="eyebrow">Global Infra Solutions</p> */}
-            <h1>Get in Touch with Us</h1>
+            <h1>Contact Global Infra Solutions</h1>
             <p className="hero-copy narrow">
               Reach out for civil construction, turnkey interiors, workspace transformations, and
               delivery-led project consultations.

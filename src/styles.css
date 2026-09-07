@@ -354,7 +354,7 @@ figure {
   background: #fff;
 }
 
-.services-section .service-card h4,
+.services-section .service-card h3,
 .services-section .service-card p {
   color: #111;
 }
@@ -707,7 +707,7 @@ figure {
   gap: 12px;
 }
 
-.service-card h4,
+.service-card h3,
 .project-gallery-card__body h3 {
   margin: 0 0 12px;
   font-size: 21px;
@@ -2030,7 +2030,7 @@ figure {
     padding: 20px;
   }
 
-  .service-card h4,
+  .service-card h3,
   .project-gallery-card__body h3 {
     font-size: 19px;
   }

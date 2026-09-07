@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+import { services } from '../data/services'
 
 const HomePage = lazy(() => import('../pages/HomePage'))
 const AboutPage = lazy(() => import('../pages/AboutPage'))
@@ -7,7 +8,10 @@ const CrmPage = lazy(() => import('../pages/CrmPage'))
 const AllProjectsPage = lazy(() => import('../pages/AllProjectsPage'))
 const ProjectGalleryPage = lazy(() => import('../pages/ProjectGalleryPage'))
 
+const ServicePage = lazy(() => import('../pages/ServicePage'))
+
 export const routeConfig = [
+  ...services.map(({ path }) => ({ path, Component: ServicePage })),
   {
     path: '/',
     Component: HomePage,
